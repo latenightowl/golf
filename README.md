@@ -1,5 +1,8 @@
-# golf
+# Golf
 
-EUGENIE WAS HERE
+Team Members:
+Su Kim
+Eugenie Zhu
+Thomas Zakharzhevskiy
 
-# no
+# Golf
