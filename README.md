@@ -1,12 +1,11 @@
 # Golf
 
-Team Members:
-Su Kim  
-Eugenie Zhu  
-Thomas Zakharzhevskiy  
+Welcome to CS151, **section 3**.
+For this project, our goal is to produce two implementations:  
+1) A graph editor framework using **hard objects**, **Canvas**, and **HTML Tables**  
+2) A UML editor (**class** diagram type)
 
 ***
 
-Repository for CS151 Project.
-Implementation of a graph and UML editor.  
-Please check the wiki for more details.
+Authors: Su Kim, Eugenie Zhu, Thomas Zakharzhevskiy  
+
