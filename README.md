@@ -5,4 +5,8 @@ Su Kim
 Eugenie Zhu
 Thomas Zakharzhevskiy
 
-# Golf
+***
+
+Repository for CS151 Project.
+Implementation of a graph and UML editor.
+Please check the wiki for more details.
