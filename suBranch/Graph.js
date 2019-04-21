@@ -21,19 +21,19 @@ class Graph {
       for (const n of this.nodes) {
          n.draw()
       }
-      // for (const e of this.edges) {
-      //    e.draw()
-      // }
+      for (const e of this.edges) {
+         e.draw()
+      }
    }
 
-   // connect(e, p1, p2) {
-   //    const n1 = findNode(p1)
-   //    const n2 = findNode(p2)
-   //    if (n1 !== undefined && n2 !== undefined) {
-   //       e.connect(n1, n2)
-   //       this.edges.push(e)
-   //       return true
-   //    }
-   //    return false
-   // }
+   connect(e, p1, p2) {
+      const n1 = this.findNode(p1)
+      const n2 = this.findNode(p2)
+      if (n1 !== undefined && n2 !== undefined) {
+         e.connect(n1, n2)
+         this.edges.push(e)
+         return true
+      }
+      return false
+   }
 } 

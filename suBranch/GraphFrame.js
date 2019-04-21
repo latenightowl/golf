@@ -7,48 +7,14 @@ function setEdge() { option = 'edge' }
 
 document.addEventListener('DOMContentLoaded', function () {
   const graph = new Graph()
-   //const n1 = createCircleNode(10, 10, 20, 'goldenrod')
-   //graph.add(n1)
-   
-  // function center(rect) {
-  //  return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
-  // }
-
-   // function createLineEdge() {
-   //   let start = undefined
-   //   let end = undefined
-   //   return {
-   //     connect: (s, e) => {
-   //       start = s
-   //       end = e
-   //     },
-   //     draw: () => {
-   //       const canvas = document.getElementById('myCanvas')
-   //       const ctx = canvas.getContext('2d')
-   //       ctx.beginPath()
-   //       const p = center(start.getBounds()) // Just pick the center of the bounds for now
-   //       const q = center(end.getBounds()) // Not the "connection points" that graphed2 uses
-   //       ctx.moveTo(p.x, p.y)
-   //       ctx.lineTo(q.x, q.y)
-   //       ctx.stroke()
-   //     }
-   //   }
-   // }
-   
-   // const e = createLineEdge()
-   // graph.connect(e, { x: 20, y: 20 }, { x: 40, y: 40 })
-   
-   
-   // graph.draw()
-   
-   
-   let selected = undefined
+  const canvas = document.getElementById('graphpanel')
+  let dragStartPoint = undefined
+  let dragStartBounds = undefined
    
   function repaint() {
     canvas.innerHTML = ''
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     graph.draw()
     // if (selected !== undefined) {
     //   const bounds = selected.getBounds()
@@ -67,9 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-   // let dragStartPoint = undefined
-   // let dragStartBounds = undefined
-  const canvas = document.getElementById('graphpanel')
   canvas.addEventListener('mousedown', event => {
     let mousePoint = mouseLocation(event)
     // dragStartPoint = mousePoint
@@ -79,8 +42,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
     if(option === 'circle') { graph.add(createCircleNode(mousePoint.x, mousePoint.y)) }
     if(option === 'diamond') { graph.add(createDiamondNode(mousePoint.x, mousePoint.y)) }
+    if(option === 'edge') { dragStartPoint = mousePoint }
     repaint()
   })
+
+  canvas.addEventListener('mouseup', event => {
+    let mousePoint = mouseLocation(event)
+    if(option === 'edge' && dragStartPoint != undefined) {
+      const e = createLineEdge()
+      graph.connect(e , dragStartPoint, mousePoint)
+    }
+    repaint()
+    dragStartPoint = undefined
+  })  
    
   canvas.addEventListener('mousemove', event => {
     let mousePoint = mouseLocation(event)
@@ -95,10 +69,5 @@ document.addEventListener('DOMContentLoaded', function () {
     repaint()
   })
    
-  canvas.addEventListener('mouseup', event => {
-    let mousePoint = mouseLocation(event)
-    // dragStartPoint = undefined
-    // dragStartBounds = null
-    repaint()
-  })  
+
 })
