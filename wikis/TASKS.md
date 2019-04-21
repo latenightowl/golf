@@ -1,0 +1,26 @@
+Tasks! Always append to this list to keep track of all work done. Use double tildes to cross off finished tasks like ~~this~~. Make sure to date, initial, and follow the format.
+
+***
+
+Week 0: Initial set up
+* ~~Meet team members, exchange contact info, set up github~~
+* ~~Set up the wiki, think of how to split up project work~~
+* ~~Set up individual report~~, make 5 commits (SK)
+* ~~Set up individual report~~, make 5 commits (EZ)
+* Set up individual report, make 5 commits (TZ)
+
+Week 1
+* ~~Unzip~~ and analyze Violet.jar (EZ)
+* Create initial UML class diagram application files based on Violet (EZ)
+* ~~Create basic graph editor with functionality~~ (SK)
+* Use basic graph editor to plan Class Diagram editor
+* discuss the method of implementation
+* Think about adding css to buttons
+* 5 commits, individual reports
+
+Week 2
+* Finish basic functionality
+
+
+
+
