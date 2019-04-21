@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //   dragStartBounds = selected.getBounds()
     // }
     if(option === 'circle') { graph.add(createCircleNode(mousePoint.x, mousePoint.y)) }
+    if(option === 'diamond') { graph.add(createDiamondNode(mousePoint.x, mousePoint.y)) }
     repaint()
   })
    

@@ -19,8 +19,11 @@ function createDiamondNode (x, y) {
       const c = document.getElementById("graphpanel")
       const ctx = c.getContext("2d")
       ctx.beginPath()
-      ctx.arc(x+20/2, y+20/2, 20/2, 0, 2*Math.PI)
-      ctx.fillStyle = 'goldenrod'
+      ctx.moveTo(x+10, y)
+      ctx.lineTo(x+20, y+10)
+      ctx.lineTo(x+10, y+20)
+      ctx.lineTo(x, y+10)
+      ctx.fillStyle = 'red'
       ctx.fill()
     }
   }
