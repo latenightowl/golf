@@ -14,11 +14,14 @@ Week 1
 * Create initial UML class diagram application files based on Violet (EZ)
 * ~~Create basic graph editor with functionality~~ (SK)
 * Use basic graph editor to plan Class Diagram editor
+* need to fix selector button
+* pick better colors
 * discuss the method of implementation
 * Think about adding css to buttons
 * 5 commits, individual reports
 
 Week 2
+* go to office hours: ask about clarification, wiki format, project implementation
 * Finish basic functionality
 
 
