@@ -4,6 +4,7 @@ function setSelect() { option = 'select' }
 function setCircle() { option = 'circle' }
 function setDiamond() { option = 'diamond' }
 function setEdge() { option = 'edge' }
+function setClass() { option = 'class'}
 function drawGrabber(x, y) {
    const size = 3;
    const c = document.getElementById("graphpanel");
@@ -22,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let selected = undefined
 
   function repaint() {
+    let c = document.getElementById('nodeContainer');
+    c.innerHTML = '';
     canvas.innerHTML = ''
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(option === 'select' && selected) { dragStartBounds = selected.getBounds() }
     if(option === 'circle') { graph.add(createCircleNode(mousePoint.x, mousePoint.y)) }
     if(option === 'diamond') { graph.add(createDiamondNode(mousePoint.x, mousePoint.y)) }
+    if(option === 'class') { graph.add(createClassNode(mousePoint.x, mousePoint.y)) }
     repaint()
   })
    
