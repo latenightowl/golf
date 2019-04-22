@@ -1,3 +1,7 @@
 #graphpanel {
     border: solid black thin;
 }
+
+table {
+    border: 1px solid black;
+}
