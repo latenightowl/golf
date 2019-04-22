@@ -1,15 +1,16 @@
 function createCircleNode (x, y) {
+   let size = 20;
    return {
       getBounds: () => {
          return {
             x: x,
             y: y,
-            width: 20,
-            height: 20            
+            width: size,
+            height: size            
          }
       },
       contains: p => {
-         return (x+20/2-p.x)**2+(y+20/2-p.y)**2 <= 20**2/4
+         return (x+size/2-p.x)**2+(y+size/2-p.y)**2 <= size**2/4
       },
       translate: (dx, dy) => {
          x += dx
@@ -19,9 +20,20 @@ function createCircleNode (x, y) {
          const c = document.getElementById("graphpanel")
          const ctx = c.getContext("2d")
          ctx.beginPath()
-         ctx.arc(x+20/2, y+20/2, 20/2, 0, 2*Math.PI)
+         ctx.arc(x+size/2, y+size/2, size/2, 0, 2*Math.PI)
          ctx.fillStyle = 'goldenrod'
          ctx.fill()
+      },
+      connectionPoint: (other) => {
+            let centerX = x + size / 2;
+            let centerY = y + size / 2;
+            let dx = other.x - centerX;
+            let dy = other.y - centerY;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance == 0) return other;
+            else return {
+                  x : centerX + dx * (size / 2) / distance,
+                  y:  centerY + dy * (size / 2) / distance};
       }
    }
 }
