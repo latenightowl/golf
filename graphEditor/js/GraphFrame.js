@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function repaint() {
     let c = document.getElementById('nodeContainer');
-    c.innerHTML = '';
+    if(c !== null){
+      c.innerHTML = '';
+    }
     canvas.innerHTML = ''
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
