@@ -16,7 +16,7 @@ Week 1
 <br/><br/>
 4/20 4:45pm - 6:00pm: Read through lab 18 and the internet and try to figure out how to use Canvas properly to start the project. Read through the Violet files to try and understand how to implement the project.
 <br/><br/>
-4/21 3:00pm - 6:00pm: Read through Su's code and ran his graph editor locally. It's an extension of lab 18. Used Su's graph editor to implement an HTML table button that should represent a class node in a UML class diagram. I also figured out how to use GitHub and how to properly collaborate with others: I created my own branch, we started doing pull requests, etc.
+4/21 3:00pm - 7:00pm: Read through Su's code and ran his graph editor locally. It's an extension of lab 18. Used Su's graph editor to implement an HTML table button that should represent a class node in a UML class diagram. I also figured out how to use GitHub and how to properly collaborate with others: I created my own branch, we started doing pull requests, etc.
 <br/><br/>
 Comments: I didn't utilize my resources properly which is why I got extremely frustrated. I realized lab 18 had very clear instructions on how to create HTML tables in a canvas halfway through trying to code it from scratch. Next week, I want to figure out how to add the "properties" box to add text to the class node when you click on the node. I also need to go to office hours to figure out if we're even doing this entire project correctly.
 <br/><br/>
