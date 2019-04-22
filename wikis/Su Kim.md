@@ -12,11 +12,11 @@ Total hours on project: 1 hours
 Week 1
 ======
 (4/20) 4:30pm-1:30am: Implemented graph editor. html scripts. nodes, edges, selector buttons with function.  
-Date time3-time4: What you worked on  
+(4/21) 9:00pm-10:00pm: Merged branches, organized folders and files, updated wiki and individual report  
 ...  
-Comments: i hope im implementing correctly. im sure about hard objects, but not sure about html tables
-Total hours this week:  
-Total hours on project:  
+Comments: i hope im implementing correctly
+Total hours this week: 10 hours
+Total hours on project:  9 hours
 
 ***
 
