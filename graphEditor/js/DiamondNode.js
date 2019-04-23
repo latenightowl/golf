@@ -8,7 +8,8 @@ function createDiamondNode (x, y) {
             x: x,
             y: y,
             width: width,
-            height: height            
+            height: height,
+            center: () => {return {x: x + width / 2, y: y + height / 2}}
          }
       },
       contains: p => {
@@ -32,8 +33,8 @@ function createDiamondNode (x, y) {
       getConnectionPoint: (other) => {
          let centerX = x + width / 2
          let centerY = y + height / 2
-         let dx = other.getBounds().x - x
-         let dy = other.getBounds().y - y
+         let dx = other.getBounds().center().x - x
+         let dy = other.getBounds().center().y - y
          if (dx >= dy && dx >= -dy) return {x: x + width, y: centerY}
          if (dx < dy && dx >= -dy) return {x: centerX, y: y + height}
          if (dx >= dy && dx < -dy) return {x: centerX, y: y}

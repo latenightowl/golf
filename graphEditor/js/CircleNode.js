@@ -7,7 +7,8 @@ function createCircleNode (x, y) {
             x: x,
             y: y,
             width: size,
-            height: size
+            height: size,
+            center: () => {return {x: x + size / 2, y: y + size / 2}}
          }
       },
       contains: p => {
@@ -28,12 +29,12 @@ function createCircleNode (x, y) {
       getConnectionPoint: (other) => {
          let centerX = x + size / 2
          let centerY = y + size / 2
-         let dx = other.getBounds().x - centerX
-         let dy = other.getBounds().y - centerY
+         let dx = other.getBounds().center().x - centerX
+         let dy = other.getBounds().center().y - centerY
          let distance = Math.sqrt(dx * dx + dy * dy)
          if (distance == 0) return other
          else return {
-            x : centerX + dx * (size / 2) / distance,
+            x: centerX + dx * (size / 2) / distance,
             y:  centerY + dy * (size / 2) / distance
          }
       }
