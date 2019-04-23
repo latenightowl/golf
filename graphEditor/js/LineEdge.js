@@ -14,8 +14,10 @@ function createLineEdge() {
          const canvas = document.getElementById('graphpanel')
          const ctx = canvas.getContext('2d')
          ctx.beginPath()
-         const p = center(start.getBounds()) // Just pick the center of the bounds for now
-         const q = center(end.getBounds()) // Not the "connection points" that graphed2 uses
+         //const pCenter = center(start.getBounds()) // Just pick the center of the bounds for now
+         //const qCenter = center(end.getBounds()) // Not the "connection points" that graphed2 uses
+         const p = start.getConnectionPoint(end) // Just pick the center of the bounds for now
+         const q = end.getConnectionPoint(start) // Not the "connection points" that graphed2 uses
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(q.x, q.y)
          ctx.stroke()

@@ -1,12 +1,13 @@
 function createCircleNode (x, y) {
    let size = 20;
+   
    return {
       getBounds: () => {
          return {
             x: x,
             y: y,
             width: size,
-            height: size            
+            height: size
          }
       },
       contains: p => {
@@ -24,16 +25,17 @@ function createCircleNode (x, y) {
          ctx.fillStyle = 'goldenrod'
          ctx.fill()
       },
-      connectionPoint: (other) => {
-            let centerX = x + size / 2;
-            let centerY = y + size / 2;
-            let dx = other.x - centerX;
-            let dy = other.y - centerY;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance == 0) return other;
-            else return {
-                  x : centerX + dx * (size / 2) / distance,
-                  y:  centerY + dy * (size / 2) / distance};
+      getConnectionPoint: (other) => {
+         let centerX = x + size / 2
+         let centerY = y + size / 2
+         let dx = other.getBounds().x - centerX
+         let dy = other.getBounds().y - centerY
+         let distance = Math.sqrt(dx * dx + dy * dy)
+         if (distance == 0) return other
+         else return {
+            x : centerX + dx * (size / 2) / distance,
+            y:  centerY + dy * (size / 2) / distance
+         }
       }
    }
 }
