@@ -23,3 +23,17 @@ Comments: I didn't utilize my resources properly which is why I got extremely fr
 Total hours this week: 4.5
 <br/>
 Total hours on project: 6.25
+
+Week 2
+======
+4/15 4:00pm - 4:15pm: XXX
+<br/><br/>
+4/20 4:45pm - 6:00pm: XXX
+<br/><br/>
+4/21 3:00pm - 7:00pm: XXX
+<br/><br/>
+Comments: XXX
+<br/><br/>
+Total hours this week: 
+<br/>
+Total hours on project: 6.25
