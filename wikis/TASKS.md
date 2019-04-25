@@ -23,6 +23,8 @@ Week 1
 Week 2
 * go to office hours: ask about clarification, wiki format, project implementation
 * Finish basic functionality
+* Add note yellow note node (EZ)
+* Add property modal to class node (EZ)
 * Individual report and 5 commits (EZ)
 * Individual report and 5 commits (SK)
 * Individual report and 5 commits (TZ)
