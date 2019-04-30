@@ -1,7 +1,12 @@
-function createCircleNode (x, y) {
-   let size = 20;
+function createCircleNode () {
+   let size = 20
+   let x = 0
+   let y = 0
    
    return {
+      clone: () => {
+         return createCircleNode()
+      }
       getBounds: () => {
          return {
             x: x,
