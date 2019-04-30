@@ -15,6 +15,17 @@ function drawGrabber(x, y) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+   const toolbar = new Toolbar(new TBButton(createCircleNode()), new TBButton(createDiamondNode()))
+   toolbar.generateHTML()
+
+   let all = document.getElementsByClassName("tBButton")
+   console.log(all.length)
+
+   for (let i=0, max=all.length; i < max; i++) {
+      console.log("found")
+   }
+
+
    const graph = new Graph()
    const canvas = document.getElementById('graphpanel')
    let dragStartPoint = undefined
@@ -24,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
    function repaint() {
       canvas.innerHTML = ''
       const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       graph.draw()
 
       if (selected !== undefined) {

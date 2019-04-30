@@ -2,12 +2,12 @@ function createCircleNode (color) {
    let size = 20
    let x = 0
    let y = 0
-   this.color = color
+   //this.color = color
    
    return {
       clone: () => {
-         return createCircleNode()
-      }
+         return createCircleNode(color)
+      },
       getBounds: () => {
          return {
             x: x,
@@ -24,9 +24,7 @@ function createCircleNode (color) {
          x += dx
          y += dy
       },
-      draw: () => {
-         const c = document.getElementById("graphpanel")
-         const ctx = c.getContext("2d")
+      draw: (ctx) => {
          ctx.beginPath()
          ctx.arc(x+size/2, y+size/2, size/2, 0, 2*Math.PI)
          ctx.fillStyle = color

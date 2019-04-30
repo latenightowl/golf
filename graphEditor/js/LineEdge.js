@@ -10,9 +10,7 @@ function createLineEdge() {
          start = s
          end = e
       },
-      draw: () => {
-         const canvas = document.getElementById('graphpanel')
-         const ctx = canvas.getContext('2d')
+      draw: (ctx) => {
          ctx.beginPath()
          //const pCenter = center(start.getBounds()) // Just pick the center of the bounds for now
          //const qCenter = center(end.getBounds()) // Not the "connection points" that graphed2 uses

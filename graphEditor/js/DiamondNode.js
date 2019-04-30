@@ -19,9 +19,7 @@ function createDiamondNode (x, y) {
          x += dx
          y += dy
       },
-      draw: () => {
-         const c = document.getElementById("graphpanel")
-         const ctx = c.getContext("2d")
+      draw: (ctx) => {
          ctx.beginPath()
          ctx.moveTo(x+width/2, y)
          ctx.lineTo(x+width, y+height/2)
