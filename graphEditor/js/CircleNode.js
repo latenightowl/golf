@@ -1,7 +1,13 @@
-function createCircleNode (x, y) {
-   let size = 20;
+function createCircleNode (color) {
+   let size = 20
+   let x = 0
+   let y = 0
+   this.color = color
    
    return {
+      clone: () => {
+         return createCircleNode()
+      }
       getBounds: () => {
          return {
             x: x,
@@ -23,7 +29,7 @@ function createCircleNode (x, y) {
          const ctx = c.getContext("2d")
          ctx.beginPath()
          ctx.arc(x+size/2, y+size/2, size/2, 0, 2*Math.PI)
-         ctx.fillStyle = 'goldenrod'
+         ctx.fillStyle = color
          ctx.fill()
       },
       getConnectionPoint: (other) => {
