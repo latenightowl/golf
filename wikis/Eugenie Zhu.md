@@ -35,3 +35,15 @@ Comments: Busy week and didn't spend as much time as I wanted to on this project
 Total hours this week: 3
 <br/>
 Total hours on project: 9.25
+
+Week 3
+======
+4/27 3:00pm - 5:00pm: XXX
+<br/><br/>
+4/28 6:00pm - 7:00pm: XXX
+<br/><br/>
+Comments: XXX
+<br/><br/>
+Total hours this week: 
+<br/>
+Total hours on project: 9.25
