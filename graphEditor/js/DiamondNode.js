@@ -1,6 +1,8 @@
-function createDiamondNode (x, y) {
+function createDiamondNode () {
    let width = 20;
    let height = 20;
+   let x = 0
+   let y = 0
       
    return {
       getBounds: () => {
