@@ -30,7 +30,7 @@ Week 2
 <br/><br/>
 4/28 6:00pm - 7:00pm: Set up the live site: eugeniezhu.bitbucket.io. Couldn't set up the live site on github, since Su already has a live site and each account can only have one. I tried to fork the repo to mine so that I could set it up on my github, but that didn't work either since Su is the owner of the repo. Finally just decided to copy paste the files into my bit bucket and perhaps update it once a week with our progress.
 <br/><br/>
-Comments: Busy week and didn't spend as much time as I wanted to on this project. Since a lot of my big projects were due last week, hopefully I'll have more time to tackle this project this week. Really struggling with this project since my JavaScript skills are really weak.
+Comments: Busy week and didn't spend as much time as I wanted to on this project. Since a lot of my big projects were due last week, hopefully I'll have more time to tackle this project this week. Really struggling with this project since my JavaScript skills are really weak. Also, since I never got anything to work on my end, I never commit onto the repo, so I couldn't get my 5 commits this week.
 <br/><br/>
 Total hours this week: 3
 <br/>
