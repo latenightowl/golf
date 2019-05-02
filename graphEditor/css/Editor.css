@@ -1,7 +1,9 @@
 #graphpanel {
-    border: solid black thin;
+   border: solid black thin;
 }
 
-.toolbar {
-    opacity: 1.0;
+.tBButton {
+   opacity: 1;
+   float: left;
 }
+

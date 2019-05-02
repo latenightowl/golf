@@ -1,9 +1,22 @@
 let option = 'select'
 
-function setSelect() { option = 'select' }
-function setCircle() { option = 'circle' }
-function setDiamond() { option = 'diamond' }
-function setEdge() { option = 'edge' }
+function setSelect() {
+   option = 'select'
+}
+
+function setCircle() {
+   option = 'circle'
+   console.log("circle")
+}
+
+function setDiamond() {
+   option = 'diamond'
+}
+
+function setEdge() {
+   option = 'edge'
+}
+
 function drawGrabber(x, y) {
    const size = 3;
    const c = document.getElementById("graphpanel");
@@ -21,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
    let all = document.getElementsByClassName("tBButton")
    console.log(all.length)
 
-   for (let i=0, max=all.length; i < max; i++) {
+   for (let i = 0, max = all.length; i < max; i++) {
       console.log("found")
    }
 
