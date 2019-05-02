@@ -1,39 +1,47 @@
 "use strict"
 
-class TBButton {
-   constructor(node) {
-      console.log("Hello world! I am a button with a " + node)
-      this.width = 50
-      this.height = 50
-      this.node = node
-      this.node.translate(this.width / 4, this.height / 4)
-   }
+function TBButton(myNode) {
+   console.log("Hello world! I am a button with a " + myNode)
+   let width = 50
+   let height = 50
+   let node = myNode
+   node.translate(width / 4, height / 4)
+   let index = -1
 
-   init(index) {
-      this.index = index
-   }
+   return {
+      init(i) {
+         index = i
+      },
 
-   generateHTML() {
-      let div = document.createElement("div")
+      generateHTML() {
+         let div = document.createElement("div")
 
-      div.id = "button" + this.index
-      div.className = "tBButton"
-      div.onclick = setCircle()
+         div.id = "button" + index
+         div.className = "tBButton"
+         //div.onclick = setCircle()
+         div.addEventListener("click", function() {
+            console.log(width)
+            let typeName = node.getType();
+            typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
+            window["tool" + typeName](arguments)
+            console.log("used")
+         })
 
-      let canvas = document.createElement("canvas")
-      canvas.width = this.width
-      canvas.height = this.height
-      div.appendChild(canvas)
+         let canvas = document.createElement("canvas")
+         canvas.width = width
+         canvas.height = height
+         div.appendChild(canvas)
 
-      console.log("Created canvas " + canvas.id + " " + canvas.class)
-      let container = document.getElementById("toolbar-container")
-      console.log(container)
-      container.appendChild(div)
-      //document.getElementsByTagName("body")[0].appendChild(canvas)
+         console.log("Created canvas " + canvas.id + " " + canvas.class)
+         let container = document.getElementById("toolbar-container")
+         console.log(container)
+         container.appendChild(div)
+         //document.getElementsByTagName("body")[0].appendChild(canvas)
 
-      let ctx = canvas.getContext("2d")
+         let ctx = canvas.getContext("2d")
 
-      console.log(this.node.x)
-      this.node.draw(ctx)
+         console.log(ctx)
+         node.draw(ctx)
+      }
    }
 }

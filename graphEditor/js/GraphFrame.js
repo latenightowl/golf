@@ -1,19 +1,18 @@
 let option = 'select'
 
-function setSelect() {
+function toolSelect() {
    option = 'select'
 }
 
-function setCircle() {
+function toolCircle() {
    option = 'circle'
-   console.log("circle")
 }
 
-function setDiamond() {
+function toolDiamond() {
    option = 'diamond'
 }
 
-function setEdge() {
+function toolEdge() {
    option = 'edge'
 }
 
@@ -31,13 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
    const toolbar = new Toolbar(new TBButton(createCircleNode()), new TBButton(createDiamondNode()))
    toolbar.generateHTML()
 
-   let all = document.getElementsByClassName("tBButton")
-   console.log(all.length)
+   // let all = document.getElementsByClassName("tBButton")
+   // console.log(all.length)
 
-   for (let i = 0, max = all.length; i < max; i++) {
-      console.log("found")
-   }
+   // for (let i = 0, max = all.length; i < max; i++) {
+   //    console.log("found")
+   // }
 
+   // toolCircle()
 
    const graph = new Graph()
    const canvas = document.getElementById('graphpanel')
@@ -72,9 +72,21 @@ document.addEventListener('DOMContentLoaded', function () {
       let mousePoint = mouseLocation(event)
       dragStartPoint = mousePoint
       selected = graph.findNode(mousePoint)
-      if (option === 'select' && selected) { dragStartBounds = selected.getBounds() }
-      if (option === 'circle') { graph.add(createCircleNode(mousePoint.x, mousePoint.y)) }
-      if (option === 'diamond') { graph.add(createDiamondNode(mousePoint.x, mousePoint.y)) }
+      if (option === 'select' && selected) {
+         dragStartBounds = selected.getBounds()
+      }
+      if (option === 'circle') {
+         let newCircle = createCircleNode()
+         newCircle.setColor('green')
+         newCircle.translate(mousePoint.x, mousePoint.y)
+         graph.add(newCircle)
+      }
+      if (option === 'diamond') {
+         let newDiamond = createDiamondNode()
+         newDiamond.setColor('blue')
+         newDiamond.translate(mousePoint.x, mousePoint.y)
+         graph.add(newDiamond)
+      }
       repaint()
    })
 
