@@ -1,5 +1,4 @@
 class Graph {
-   
    constructor() {
       this.nodes = []
       this.edges = []
@@ -18,8 +17,8 @@ class Graph {
    }
 
    draw() {
-      const canvas = document.getElementById('graphpanel')
-      const ctx = canvas.getContext("2d");
+      const canvas = document.getElementById("graphpanel")
+      const ctx = canvas.getContext("2d")
       for (const n of this.nodes) {
          n.draw(ctx)
       }
@@ -38,4 +37,4 @@ class Graph {
       }
       return false
    }
-} 
+}

@@ -21,10 +21,9 @@ function TBButton(myNode) {
          //div.onclick = setCircle()
          div.addEventListener("click", function() {
             console.log(width)
-            let typeName = node.getType();
-            typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
-            window["tool" + typeName](arguments)
-            console.log("used")
+            let typeName = node.getType()
+            typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
+            setTool(node.getType())
          })
 
          let canvas = document.createElement("canvas")
