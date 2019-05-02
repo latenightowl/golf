@@ -5,10 +5,15 @@ function setTool(newTool) {
    console.log(option)
 }
 
-function drawGrabber(x, y) {
-   const size = 3
-   const c = document.getElementById("graphpanel")
-   const ctx = c.getContext("2d")
+function drawGrabber(ctx, bounds) {
+   drawGrabberCorner(ctx, bounds.x, bounds.y)
+   drawGrabberCorner(ctx, bounds.x + bounds.width, bounds.y)
+   drawGrabberCorner(ctx, bounds.x, bounds.y + bounds.height)
+   drawGrabberCorner(ctx, bounds.x + bounds.width, bounds.y + bounds.height)
+}
+
+function drawGrabberCorner(ctx, x, y) {
+   const size = 4
    ctx.beginPath()
    ctx.rect(x - size / 2, y - size / 2, size, size)
    ctx.fillStyle = "black"
@@ -16,9 +21,10 @@ function drawGrabber(x, y) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-   const toolbar = new Toolbar(
-      new TBButton(createCircleNode()),
-      new TBButton(createDiamondNode())
+   const toolbar = createToolbar(
+      createTBButton("select"),
+      createTBButton("circleNode"),
+      createTBButton("diamondNode")
    )
    toolbar.generateHTML()
 
@@ -45,10 +51,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (selected !== undefined) {
          const bounds = selected.getBounds()
-         drawGrabber(bounds.x, bounds.y)
-         drawGrabber(bounds.x + bounds.width, bounds.y)
-         drawGrabber(bounds.x, bounds.y + bounds.height)
-         drawGrabber(bounds.x + bounds.width, bounds.y + bounds.height)
+         const ctx = canvas.getContext("2d")
+         drawGrabber(ctx, bounds)
       }
    }
 
@@ -64,21 +68,25 @@ document.addEventListener("DOMContentLoaded", function() {
       let mousePoint = mouseLocation(event)
       dragStartPoint = mousePoint
       selected = graph.findNode(mousePoint)
+
       if (option === "select" && selected) {
          dragStartBounds = selected.getBounds()
       }
-      if (option === "circle") {
+
+      if (option === "circleNode") {
          let newCircle = createCircleNode()
          newCircle.setColor("green")
          newCircle.translate(mousePoint.x, mousePoint.y)
          graph.add(newCircle)
       }
-      if (option === "diamond") {
+
+      if (option === "diamondNode") {
          let newDiamond = createDiamondNode()
          newDiamond.setColor("blue")
          newDiamond.translate(mousePoint.x, mousePoint.y)
          graph.add(newDiamond)
       }
+
       repaint()
    })
 

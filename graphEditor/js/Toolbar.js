@@ -1,17 +1,17 @@
-'use strict'
+"use strict"
 
-class Toolbar {
-
-   constructor(...args) {
-      this.buttons = args;
-      console.log(this.buttons);
-      this.nodes = []
-      this.edges = []
-   }
-   generateHTML() {
-      this.buttons.forEach((element, index) => {
-         element.init(index)
-         element.generateHTML()
-      })
+function createToolbar(...args) {
+   let buttons = args
+   console.log(buttons)
+   return {
+      generateHTML() {
+         buttons.forEach((element, index) => {
+            element.init(index)
+            element.generateHTML()
+         })
+      },
+      addButton(button) {
+         buttons.push(button)
+      }
    }
 }

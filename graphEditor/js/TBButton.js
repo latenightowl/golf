@@ -1,11 +1,9 @@
 "use strict"
 
-function TBButton(myNode) {
-   console.log("Hello world! I am a button with a " + myNode)
+function createTBButton(myType) {
    let width = 50
    let height = 50
-   let node = myNode
-   node.translate(width / 4, height / 4)
+   let type = myType
    let index = -1
 
    return {
@@ -21,9 +19,7 @@ function TBButton(myNode) {
          //div.onclick = setCircle()
          div.addEventListener("click", function() {
             console.log(width)
-            let typeName = node.getType()
-            typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
-            setTool(node.getType())
+            setTool(type)
          })
 
          let canvas = document.createElement("canvas")
@@ -38,9 +34,27 @@ function TBButton(myNode) {
          //document.getElementsByTagName("body")[0].appendChild(canvas)
 
          let ctx = canvas.getContext("2d")
+         ctx.fillStyle = "gray"
+         ctx.fillRect(0, 0, width, height)
 
          console.log(ctx)
-         node.draw(ctx)
+
+         let typeName = type
+         typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
+         console.log("create" + typeName)
+         try {
+            let node = window["create" + typeName]()
+            node.translate(width / 4, height / 4)
+            node.draw(ctx)
+         } catch (error) {
+            console.log("no icon")
+            drawGrabber(ctx, {
+               x: width / 4,
+               y: height / 4,
+               width: width / 2,
+               height: height / 2
+            })
+         }
       }
    }
 }
