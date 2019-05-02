@@ -1,4 +1,4 @@
-function createDiamondNode() {
+function createNodeDiamond() {
    let width = 20
    let height = 20
    let x = 0

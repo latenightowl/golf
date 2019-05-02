@@ -42,12 +42,21 @@ function createTBButton(myType) {
          let typeName = type
          typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
          console.log("create" + typeName)
-         try {
-            let node = window["create" + typeName]()
-            node.translate(width / 4, height / 4)
-            node.draw(ctx)
-         } catch (error) {
-            console.log("no icon")
+
+         if (type != "select") {
+            let obj = window["create" + typeName]()
+            if (obj.translate) {
+               obj.translate(width / 4, height / 4)
+               obj.draw(ctx)
+            } else {
+               ctx.beginPath()
+               ctx.moveTo(width, 0)
+               ctx.lineTo(0, height)
+               ctx.stroke()
+            }
+            
+         } else {
+            console.log(type + " no icon")
             drawGrabber(ctx, {
                x: width / 4,
                y: height / 4,

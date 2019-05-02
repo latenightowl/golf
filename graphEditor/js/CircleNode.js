@@ -1,4 +1,4 @@
-function createCircleNode() {
+function createNodeCircle() {
    let size = 20
    let x = 0
    let y = 0

@@ -2,7 +2,7 @@ function center(rect) {
    return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
 }
 
-function createLineEdge() {
+function createEdgeLine() {
    let start = undefined
    let end = undefined
    return {

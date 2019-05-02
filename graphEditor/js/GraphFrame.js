@@ -23,8 +23,9 @@ function drawGrabberCorner(ctx, x, y) {
 document.addEventListener("DOMContentLoaded", function() {
    const toolbar = createToolbar(
       createTBButton("select"),
-      createTBButton("circleNode"),
-      createTBButton("diamondNode")
+      createTBButton("nodeCircle"),
+      createTBButton("nodeDiamond"),
+      createTBButton("edgeLine")
    )
    toolbar.generateHTML()
 
@@ -73,15 +74,15 @@ document.addEventListener("DOMContentLoaded", function() {
          dragStartBounds = selected.getBounds()
       }
 
-      if (option === "circleNode") {
-         let newCircle = createCircleNode()
+      if (option === "nodeCircle") {
+         let newCircle = createNodeCircle()
          newCircle.setColor("green")
          newCircle.translate(mousePoint.x, mousePoint.y)
          graph.add(newCircle)
       }
 
-      if (option === "diamondNode") {
-         let newDiamond = createDiamondNode()
+      if (option === "nodeDiamond") {
+         let newDiamond = createNodeDiamond()
          newDiamond.setColor("blue")
          newDiamond.translate(mousePoint.x, mousePoint.y)
          graph.add(newDiamond)
@@ -92,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
    canvas.addEventListener("mouseup", event => {
       let mousePoint = mouseLocation(event)
-      if (option === "edge" && dragStartPoint != undefined) {
-         const e = createLineEdge()
+      if (option === "edgeLine" && dragStartPoint != undefined) {
+         const e = createEdgeLine()
          graph.connect(e, dragStartPoint, mousePoint)
       }
       dragStartPoint = undefined
