@@ -1,8 +1,16 @@
-function createClassNode (x, y) {
-  const width = 80
-  const height = 60
+function createNodeClass() {
+  let width = 80
+  let height = 60
+  let type = "class"
+  let color = "black"
+  let x = 0
+  let y = 0
 
   return {
+    getType: () => {
+      return type
+    },
+
     getBounds: () => {
       return {
         x: x,
@@ -11,16 +19,19 @@ function createClassNode (x, y) {
         height: 60
       }
     },
-      contains: p => {
-        if(p.x >= x && p.x <= (x+width) && p.y >= y && p.y <= y+height)
-          return true
-        else
-          return false
+
+    contains: p => {
+      if(p.x >= x && p.x <= (x+width) && p.y >= y && p.y <= y+height)
+        return true
+      else
+        return false
     },
+
     translate: (dx, dy) => {
       x += dx
       y += dy
     },
+
     draw: () => {
       const container = document.getElementById('nodeContainer')
       const table = document.createElement('table')
@@ -34,6 +45,10 @@ function createClassNode (x, y) {
       table.style.width = width + 'px'
       table.style.height = height + 'px'
       container.appendChild(table)
+    },
+
+    setColor: myColor => {
+      color = myColor
     }
   }
-  }
+}
