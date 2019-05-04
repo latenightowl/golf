@@ -7,3 +7,10 @@
    float: left;
 }
 
+#property-container p {
+	display: inline;
+}
+#property-container input {
+	display: inline;
+	width: 100px;
+}

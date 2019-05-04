@@ -34,7 +34,7 @@ function createTBButton(myType) {
          //document.getElementsByTagName("body")[0].appendChild(canvas)
 
          let ctx = canvas.getContext("2d")
-         ctx.fillStyle = "gray"
+         ctx.fillStyle = "silver"
          ctx.fillRect(0, 0, width, height)
 
          console.log(ctx)

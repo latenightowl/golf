@@ -1,12 +1,16 @@
 function createProperty() {
-   let input = document.createElement("input")
+   const input = document.createElement("input")
    return {
       generateHTML() {
          input.id = "color"
          input.type = "text"
          input.value = ""
 
+          const text = document.createElement("p")
+          text.innerHTML = "Color: "
+
          let container = document.getElementById("property-container")
+         container.appendChild(text)
          container.appendChild(input)
       },
       getColor(color) {
