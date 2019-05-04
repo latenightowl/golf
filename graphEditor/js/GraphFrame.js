@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
       createTBButton("edgeLine")
    )
    toolbar.generateHTML()
+   const propBar = createProperty()
+   propBar.generateHTML()
 
    // let all = document.getElementsByClassName("tBButton")
    // console.log(all.length)
