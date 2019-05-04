@@ -32,14 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const propBar = createProperty()
   propBar.generateHTML()
 
-  const input = document.getElementById("color")
+  const input = document.getElementById("className")
   input.addEventListener("input", event => {
-    console.log('sucesss')
-    if(propBar.isColor(input.value)) {
-    selected.setColor(input.value)
+    selected.setText(input.value)
     repaint()
-  }
-})
+  })
 
   // let all = document.getElementsByClassName("tBButton")
   // console.log(all.length)
@@ -86,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
     dragStartPoint = mousePoint
     selected = graph.findNode(mousePoint)
 
-    selected !== undefined ? propBar.getColor(selected.getColor()) : propBar.emptyField()
+    selected !== undefined ? propBar.getText(selected.getText()) : propBar.emptyField()
 
     if (option === "select" && selected) {
     dragStartBounds = selected.getBounds()
