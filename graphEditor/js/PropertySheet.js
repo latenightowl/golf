@@ -8,11 +8,6 @@ function createProperty() {
 
          let container = document.getElementById("property-container")
          container.appendChild(input)
-
-         input.addEventListener("input", event => {
-            console.log('sucesss')
-            if(this.isColor(input.value)) selected.setColor(input.value)
-         })
       },
       getColor(color) {
          input.value = color
