@@ -12,6 +12,9 @@ function createProperty() {
       getColor(color) {
          input.value = color
       },
+      emptyField() {
+         input.value = ""
+      },
       isColor(c) {
          let s = new Option().style
          s.color = c

@@ -4,7 +4,7 @@ function createNodeDiamond() {
    let x = 0
    let y = 0
    let type = "diamond"
-   let color = "red"
+   let color = "black"
 
    return {
       getType: () => {

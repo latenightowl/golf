@@ -82,9 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
       let mousePoint = mouseLocation(event)
       dragStartPoint = mousePoint
       selected = graph.findNode(mousePoint)
-      if(selected !== undefined) {
-         propBar.getColor(selected.getColor())
-      }
+      selected !== undefined ? propBar.getColor(selected.getColor()) : propBar.emptyField()
 
       if (option === "select" && selected) {
          dragStartBounds = selected.getBounds()
@@ -92,14 +90,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (option === "nodeCircle") {
          let newCircle = createNodeCircle()
-         newCircle.setColor("green")
          newCircle.translate(mousePoint.x, mousePoint.y)
          graph.add(newCircle)
       }
 
       if (option === "nodeDiamond") {
          let newDiamond = createNodeDiamond()
-         newDiamond.setColor("blue")
          newDiamond.translate(mousePoint.x, mousePoint.y)
          graph.add(newDiamond)
       }
