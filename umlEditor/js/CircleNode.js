@@ -52,8 +52,13 @@ function createNodeCircle() {
         y: centerY + (dy * (size / 2)) / distance
       }
   },
+
   setColor: myColor => {
     color = myColor
+  },
+
+  getColor: () => {
+    return color
   }
 }
 }

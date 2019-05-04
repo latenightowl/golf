@@ -5,7 +5,7 @@ function createToolbar(...args) {
    console.log(buttons)
    return {
       generateHTML() {
-         buttons.forEach(element, index) => {
+         buttons.forEach((element, index) => {
             element.init(index)
             element.generateHTML()
          })
