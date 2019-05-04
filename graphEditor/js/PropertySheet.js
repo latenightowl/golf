@@ -1,17 +1,26 @@
 function createProperty() {
-   console.log('prop')
+   let input = document.createElement("input")
    return {
       generateHTML() {
-         let input = document.createElement("input")
+         input.id = "color"
          input.type = "text"
-         input.oninput = "update()"
          input.value = ""
 
          let container = document.getElementById("property-container")
          container.appendChild(input)
-      },
-      update() {
 
+         input.addEventListener("input", event => {
+            console.log('sucesss')
+            if(this.isColor(input.value)) selected.setColor(input.value)
+         })
+      },
+      getColor(color) {
+         input.value = color
+      },
+      isColor(c) {
+         let s = new Option().style
+         s.color = c
+         return s.color === c
       }
    }
 }

@@ -54,6 +54,9 @@ function createNodeCircle() {
       },
       setColor: myColor => {
          color = myColor
+      },
+      getColor: () => {
+         return color
       }
    }
 }

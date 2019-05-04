@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
          const bounds = selected.getBounds()
          const ctx = canvas.getContext("2d")
          drawGrabber(ctx, bounds)
+
       }
    }
 
@@ -71,7 +72,10 @@ document.addEventListener("DOMContentLoaded", function() {
       let mousePoint = mouseLocation(event)
       dragStartPoint = mousePoint
       selected = graph.findNode(mousePoint)
-
+      if(selected !== undefined) {
+         propBar.getColor(selected.getColor())
+      }
+      
       if (option === "select" && selected) {
          dragStartBounds = selected.getBounds()
       }
