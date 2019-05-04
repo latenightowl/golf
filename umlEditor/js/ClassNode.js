@@ -40,6 +40,7 @@ function createNodeClass() {
       const table = document.createElement('table')
       const tr = document.createElement('tr')
       const td = document.createElement('td')
+      td.innerText = "Class Name"
       table.appendChild(tr)
       tr.appendChild(td)
       table.style.position = 'absolute'
@@ -63,6 +64,10 @@ function createNodeClass() {
 
     setColor: myColor => {
       color = myColor
+    },
+
+    getColor: myColor => {
+      return color
     }
   }
 }

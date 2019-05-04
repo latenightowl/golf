@@ -7,7 +7,7 @@ function createProperty() {
          input.value = ""
 
           const text = document.createElement("p")
-          text.innerHTML = "Color: "
+          text.innerHTML = "Class Name: "
 
          let container = document.getElementById("property-container")
          container.appendChild(text)
