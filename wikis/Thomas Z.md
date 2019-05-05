@@ -16,3 +16,21 @@ Week 2
 Comments:  
 Total hours this week: 4  
 Total hours on project: 6  
+
+Week 3
+======
+04/30/19 7:00-9:00pm: Preliminary work on the toolbar. Change/examine how events are called by the HTML buttons.
+
+Comments:  
+Total hours this week: 2  
+Total hours on project: 8  
+
+Week 4
+======
+05/01/19 9-11:00pm: Fixed formatting in graph editor. Made important steps towards finishing the toolbar.
+05/02/19 12-2:00pm: Finished the toolbar for graph editor. To do this, fixed infrastructure and made changes to every single file in the graph editor.  
+...  
+
+Comments:  
+Total hours this week: ? 
+Total hours on project: ?  
