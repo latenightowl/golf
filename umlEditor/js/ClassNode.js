@@ -2,7 +2,6 @@ function createNodeClass() {
   let width = 80
   let height = 60
   let type = "class"
-  let text = "initial text"
   let color = "black"
   let x = 0
   let y = 0

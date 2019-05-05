@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
     //createTBButton("nodeCircle"),
     //createTBButton("nodeDiamond"),
     createTBButton("edgeLine"),
-    createTBButton("nodeClass")
+    createTBButton("nodeClass"),
+    createTBButton("nodeNote")
   )
   toolbar.generateHTML()
   const propBar = createProperty()
@@ -99,6 +100,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (option === "nodeClass") {
       let newClass = createNodeClass()
       newClass.setColor("white")
+      newClass.translate(mousePoint.x, mousePoint.y)
+      graph.add(newClass)
+    }
+
+    if (option === "nodeNote") {
+      let newClass = createNodeNote()
+      newClass.setColor("yellow")
       newClass.translate(mousePoint.x, mousePoint.y)
       graph.add(newClass)
     }
