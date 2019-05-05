@@ -6,11 +6,11 @@ function createNodeClass() {
   let color = "black"
   let x = 0
   let y = 0
-  const container = document.getElementById('nodeContainer')
-  const table = document.createElement('table')
-  const tr = document.createElement('tr')
-  const td = document.createElement('td')
-
+  let container = document.getElementById('nodeContainer')
+  let table = document.createElement('table')
+  let tr = document.createElement('tr')
+  let td = document.createElement('td')
+  td.innerText = "Class Name"
 
   return {
     getType: () => {
@@ -42,7 +42,6 @@ function createNodeClass() {
     },
 
     draw: () => {
-      td.innerText = "Class Name"
       table.appendChild(tr)
       tr.appendChild(td)
       table.style.position = 'absolute'
@@ -73,7 +72,7 @@ function createNodeClass() {
     },
 
     getText: className => {
-      return text
+      return td.innerText
     },
 
     setText: className => {

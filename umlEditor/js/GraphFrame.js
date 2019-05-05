@@ -23,8 +23,8 @@ function drawGrabberCorner(ctx, x, y) {
 document.addEventListener("DOMContentLoaded", function() {
   const toolbar = createToolbar(
     createTBButton("select"),
-    createTBButton("nodeCircle"),
-    createTBButton("nodeDiamond"),
+    //createTBButton("nodeCircle"),
+    //createTBButton("nodeDiamond"),
     createTBButton("edgeLine"),
     createTBButton("nodeClass")
   )
@@ -34,18 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const input = document.getElementById("className")
   input.addEventListener("input", event => {
+    console.log("success")
+    console.log(selected.getText())
     selected.setText(input.value)
     repaint()
   })
-
-  // let all = document.getElementsByClassName("tBButton")
-  // console.log(all.length)
-
-  // for (let i = 0, max = all.length; i < max; i++) {
-  //    console.log("found")
-  // }
-
-  // toolCircle()
 
   const graph = new Graph()
   const canvas = document.getElementById("graphpanel")
