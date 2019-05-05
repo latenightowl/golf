@@ -13,8 +13,20 @@ table {
 
 #property-container p {
     display: inline;
+  	margin-right: 25px;
 }
+
 #property-container input {
     display: inline;
     width: 100px;
+    height: 18px;
+    float: right;
+}
+
+#nodeContainer th {
+	padding: 10px;
+}
+
+#nodeContainer td {
+	border-top: 1px solid;
 }

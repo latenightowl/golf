@@ -23,8 +23,6 @@ function drawGrabberCorner(ctx, x, y) {
 document.addEventListener("DOMContentLoaded", function() {
   const toolbar = createToolbar(
     createTBButton("select"),
-    //createTBButton("nodeCircle"),
-    //createTBButton("nodeDiamond"),
     createTBButton("edgeLine"),
     createTBButton("nodeClass"),
     createTBButton("nodeNote")
@@ -33,13 +31,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const propBar = createProperty()
   propBar.generateHTML()
 
-  const input = document.getElementById("className")
-  input.addEventListener("input", event => {
-    console.log("success")
-    console.log(selected.getText())
-    selected.setText(input.value)
-    repaint()
-  })
+  let input1 = document.getElementById("name")
+  input1.addEventListener("input", event => {selected.setText1(input1.value)})
+  let input2 = document.getElementById("attribute")
+  input2.addEventListener("input", event => {selected.setText2(input2.value)})
+  let input3 = document.getElementById("methods")
+  input3.addEventListener("input", event => {selected.setText3(input3.value)})
 
   const graph = new Graph()
   const canvas = document.getElementById("graphpanel")
@@ -77,24 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
     dragStartPoint = mousePoint
     selected = graph.findNode(mousePoint)
 
-    selected !== undefined ? propBar.getText(selected.getText()) : propBar.emptyField()
+    selected !== undefined ? 
+      propBar.getText(selected.getText1(),selected.getText2(),selected.getText3()) 
+      : propBar.emptyField()
 
     if (option === "select" && selected) {
     dragStartBounds = selected.getBounds()
-    }
-
-    if (option === "nodeCircle") {
-      let newCircle = createNodeCircle()
-      newCircle.setColor("green")
-      newCircle.translate(mousePoint.x, mousePoint.y)
-      graph.add(newCircle)
-    }
-
-    if (option === "nodeDiamond") {
-      let newDiamond = createNodeDiamond()
-      newDiamond.setColor("blue")
-      newDiamond.translate(mousePoint.x, mousePoint.y)
-      graph.add(newDiamond)
     }
 
     if (option === "nodeClass") {
@@ -110,20 +95,20 @@ document.addEventListener("DOMContentLoaded", function() {
       newClass.translate(mousePoint.x, mousePoint.y)
       graph.add(newClass)
     }
-
+    
     repaint()
-})
+  })
 
   canvas.addEventListener("mouseup", event => {
     let mousePoint = mouseLocation(event)
     if (option === "edgeLine" && dragStartPoint != undefined) {
     const e = createEdgeLine()
     graph.connect(e, dragStartPoint, mousePoint)
-  }
-  dragStartPoint = undefined
-  dragStartBounds = null
-  repaint()
-})
+    }
+    dragStartPoint = undefined
+    dragStartBounds = null
+    repaint()
+  })
 
   canvas.addEventListener("mousemove", event => {
     let mousePoint = mouseLocation(event)
@@ -132,8 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
     selected.translate(
       dragStartBounds.x - bounds.x + mousePoint.x - dragStartPoint.x,
       dragStartBounds.y - bounds.y + mousePoint.y - dragStartPoint.y
-    )
-  }
-  repaint()
-})
+    )}
+    repaint()
+  })
 })
