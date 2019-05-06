@@ -31,9 +31,11 @@ Week 2
 * Figure out how to make generalized toolbar
 
 Week 3
-* finish both editors
-* finish toolbar
-* implement html table / modal for properties in uml
+* ~~finish both editors~~
+* ~~finish toolbar~~
+* ~~implement html table / modal for properties in uml~~
+* ~~add jsdocs~~
+* ~~add arrowheads~~
 
 
 
