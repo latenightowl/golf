@@ -1,7 +1,43 @@
-let option = "select"
+// Enum generation code from TypeScript transpilation
+var TOOL_TYPE
+;(function(TOOL_TYPE) {
+   TOOL_TYPE[(TOOL_TYPE["select"] = 0)] = "select"
+   TOOL_TYPE[(TOOL_TYPE["nodeCircle"] = 1)] = "nodeCircle"
+   TOOL_TYPE[(TOOL_TYPE["nodeDiamond"] = 2)] = "nodeDiamond"
+   TOOL_TYPE[(TOOL_TYPE["edgeLine"] = 3)] = "edgeLine"
+   TOOL_TYPE[(TOOL_TYPE["edgeLineDot"] = 4)] = "edgeLineDot"
+   TOOL_TYPE[(TOOL_TYPE["edgeH"] = 5)] = "edgeH"
+   TOOL_TYPE[(TOOL_TYPE["edgeHDot"] = 6)] = "edgeHDot"
+   TOOL_TYPE[(TOOL_TYPE["edgeV"] = 7)] = "edgeV"
+   TOOL_TYPE[(TOOL_TYPE["edgeVDot"] = 8)] = "edgeVDot"
+})(TOOL_TYPE || (TOOL_TYPE = {}))
+
+let currentTool = TOOL_TYPE.select
+
+function usingEdge() {
+   if (typeof currentTool === "string") {
+      return (
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeLine] ||
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeLineDot] ||
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeH] ||
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeV] ||
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeHDot] ||
+         currentTool === TOOL_TYPE[TOOL_TYPE.edgeVDot]
+      )
+   } else {
+      return (
+         currentTool === TOOL_TYPE.edgeLine ||
+         currentTool === TOOL_TYPE.edgeLineDot ||
+         currentTool === TOOL_TYPE.edgeH ||
+         currentTool === TOOL_TYPE.edgeV ||
+         currentTool === TOOL_TYPE.edgeHDot ||
+         currentTool === TOOL_TYPE.edgeVDot
+      )
+   }
+}
 
 function setTool(newTool) {
-   option = newTool
+   currentTool = newTool
 }
 
 function drawGrabber(ctx, bounds) {
@@ -21,18 +57,23 @@ function drawGrabberCorner(ctx, x, y) {
 
 document.addEventListener("DOMContentLoaded", function() {
    const toolbar = createToolbar(
-      createTBButton("select"),
-      createTBButton("nodeCircle"),
-      createTBButton("nodeDiamond"),
-      createTBButton("edgeLine")
+      createTBButton(TOOL_TYPE[TOOL_TYPE.select]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.nodeCircle]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.nodeDiamond]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeLine]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeLineDot]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeH]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeHDot]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeV]),
+      createTBButton(TOOL_TYPE[TOOL_TYPE.edgeVDot])
    )
    toolbar.generateHTML()
    const propBar = createProperty()
    propBar.generateHTML()
 
    const input = document.getElementById("color")
-   input.addEventListener("input", event => {
-      if(propBar.isColor(input.value)) {
+   input.addEventListener("input", (event) => {
+      if (propBar.isColor(input.value)) {
          selected.setColor(input.value)
          repaint()
       }
@@ -54,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function() {
          const bounds = selected.getBounds()
          const ctx = canvas.getContext("2d")
          drawGrabber(ctx, bounds)
-
       }
    }
 
@@ -66,23 +106,25 @@ document.addEventListener("DOMContentLoaded", function() {
       }
    }
 
-   canvas.addEventListener("mousedown", event => {
+   canvas.addEventListener("mousedown", (event) => {
       let mousePoint = mouseLocation(event)
       dragStartPoint = mousePoint
       selected = graph.findNode(mousePoint)
-      selected !== undefined ? propBar.getColor(selected.getColor()) : propBar.emptyField()
+      selected !== undefined
+         ? propBar.getColor(selected.getColor())
+         : propBar.emptyField()
 
-      if (option === "select" && selected) {
+      if (currentTool === "select" && selected) {
          dragStartBounds = selected.getBounds()
       }
 
-      if (option === "nodeCircle") {
+      if (currentTool === "nodeCircle") {
          let newCircle = createNodeCircle()
          newCircle.translate(mousePoint.x, mousePoint.y)
          graph.add(newCircle)
       }
 
-      if (option === "nodeDiamond") {
+      if (currentTool === "nodeDiamond") {
          let newDiamond = createNodeDiamond()
          newDiamond.translate(mousePoint.x, mousePoint.y)
          graph.add(newDiamond)
@@ -91,18 +133,21 @@ document.addEventListener("DOMContentLoaded", function() {
       repaint()
    })
 
-   canvas.addEventListener("mouseup", event => {
+   canvas.addEventListener("mouseup", (event) => {
       let mousePoint = mouseLocation(event)
-      if (option === "edgeLine" && dragStartPoint != undefined) {
-         const e = createEdgeLine()
+      if (usingEdge() && dragStartPoint != undefined) {
+         let typeName = currentTool
+         typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
+         const e = window["create" + typeName]()
          graph.connect(e, dragStartPoint, mousePoint)
+         repaint()
       }
       dragStartPoint = undefined
       dragStartBounds = null
-      repaint()
+      
    })
 
-   canvas.addEventListener("mousemove", event => {
+   canvas.addEventListener("mousemove", (event) => {
       let mousePoint = mouseLocation(event)
       if (dragStartBounds != null) {
          const bounds = selected.getBounds()
@@ -110,7 +155,8 @@ document.addEventListener("DOMContentLoaded", function() {
             dragStartBounds.x - bounds.x + mousePoint.x - dragStartPoint.x,
             dragStartBounds.y - bounds.y + mousePoint.y - dragStartPoint.y
          )
+         repaint()
       }
-      repaint()
+      
    })
 })

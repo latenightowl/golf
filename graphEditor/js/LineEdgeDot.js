@@ -2,7 +2,7 @@ function center(rect) {
    return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
 }
 
-function createEdgeLine() {
+function createEdgeLineDot() {
    let start = undefined
    let end = undefined
    return {
@@ -12,11 +12,11 @@ function createEdgeLine() {
       },
       draw: (ctx) => {
          ctx.beginPath()
-         let p = start.getConnectionPoint(end)
-         let q = end.getConnectionPoint(start)
+         const p = start.getConnectionPoint(end)
+         const q = end.getConnectionPoint(start)
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(q.x, q.y)
-         ctx.setLineDash([])
+         ctx.setLineDash([5])
          ctx.stroke()
       }
    }

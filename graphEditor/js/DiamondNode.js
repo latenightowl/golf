@@ -1,6 +1,6 @@
 function createNodeDiamond() {
-   let width = 20
-   let height = 20
+   let width = 50
+   let height = 30
    let x = 0
    let y = 0
    let type = "diamond"

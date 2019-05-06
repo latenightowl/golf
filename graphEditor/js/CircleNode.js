@@ -1,5 +1,5 @@
 function createNodeCircle() {
-   let size = 20
+   let size = 40
    let x = 0
    let y = 0
    let type = "circle"

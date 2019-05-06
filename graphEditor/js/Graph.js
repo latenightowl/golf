@@ -19,14 +19,13 @@ class Graph {
    draw() {
       const canvas = document.getElementById("graphpanel")
       const ctx = canvas.getContext("2d")
-      
+
       for (const e of this.edges) {
          e.draw(ctx)
       }
       for (const n of this.nodes) {
          n.draw(ctx)
       }
-      
    }
 
    connect(e, p1, p2) {

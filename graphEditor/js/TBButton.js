@@ -16,6 +16,7 @@ function createTBButton(myType) {
 
          div.id = "button" + index
          div.className = "tBButton"
+         div.title = myType
          div.addEventListener("click", function() {
             setTool(type)
          })
@@ -42,11 +43,10 @@ function createTBButton(myType) {
                obj.draw(ctx)
             } else {
                ctx.beginPath()
-               ctx.moveTo(width-10, 10)
-               ctx.lineTo(10, height-10)
+               ctx.moveTo(width - 10, 10)
+               ctx.lineTo(10, height - 10)
                ctx.stroke()
             }
-            
          } else {
             drawGrabber(ctx, {
                x: width / 4,
