@@ -59,6 +59,10 @@ function createNodeClass() {
       table.style.width = width + 'px'
       table.style.height = height + 'px'
       actualContainer.appendChild(table)
+
+      const tableStyle = getComputedStyle(table)
+      width = parseInt(tableStyle.width)
+      height = parseInt(tableStyle.height)
     },
 
     toolBarDraw: () => {
