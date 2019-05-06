@@ -12,7 +12,7 @@ function createTBButton(myType) {
       },
 
       generateHTML() {
-         let div = document.createElement("div")
+         let div = document.createElement("button")
 
          div.id = "button" + index
          div.className = "tBButton"
