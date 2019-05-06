@@ -4,7 +4,8 @@ function createNodeNote() {
   let type = "note"
   let x = 0
   let y = 0
-  let container = document.getElementById('nodeContainer')
+  let container = document.getElementById('button3')
+  let actualContainer = document.getElementById('nodeContainer')
   let table = document.createElement('table')
   let tr = document.createElement('tr')
   let td = document.createElement('th')
@@ -48,7 +49,7 @@ function createNodeNote() {
     table.style.top = y + 'px'
     table.style.width = width + 'px'
     table.style.height = height + 'px'
-    container.appendChild(table)
+    actualContainer.appendChild(table)
   },
 
   getConnectionPoint: other => {
@@ -68,6 +69,20 @@ function createNodeNote() {
 
   setText: noteText => {
     td.innerText = noteText
+  },
+  scale: (factor) => {
+    width *= factor
+    height *= factor
+  },
+  toolBarDraw: () => {
+    table.appendChild(tr)
+    tr.appendChild(td)
+    table.style.position = 'absolute'
+    table.style.left = x + 'px'
+    table.style.top = y + 'px'
+    table.style.width = width + 'px'
+    table.style.height = height + 'px'
+    container.appendChild(table)
   }
 }
 }

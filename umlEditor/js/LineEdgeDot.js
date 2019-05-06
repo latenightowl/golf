@@ -2,9 +2,9 @@ function center(rect) {
   return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
 }
 
-function createDashLine() {
-  let start = undefined
-  let end = undefined
+function createEdgeLineDot() {
+  let start
+  let end
   return {
     connect: (s, e) => {
     start = s
@@ -12,12 +12,27 @@ function createDashLine() {
   },
     draw: (ctx) => {
     ctx.beginPath()
-    const p = start.getConnectionPoint(end)
-    const q = end.getConnectionPoint(start)
+
+    let p
+    let q
+    if (start.getConnectionPoint) {
+      p = start.getConnectionPoint(end)
+    } else {
+      p = start
+    }
+    if (end.getConnectionPoint) {
+      q = end.getConnectionPoint(start)
+    } else {
+      q = end
+    }
+
     ctx.moveTo(p.x, p.y)
     ctx.lineTo(q.x, q.y)
     ctx.setLineDash([5])
     ctx.stroke()
+  },
+  getStartEnd: () => {
+    return [start, end]
   }
 }
 }

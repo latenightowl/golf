@@ -1,7 +1,45 @@
-let option = "select"
+// Enum generation code from TypeScript transpilation
+var TOOL_TYPE;
+
+(function(TOOL_TYPE) {
+  TOOL_TYPE[(TOOL_TYPE["select"] = 0)] = "select"
+  TOOL_TYPE[(TOOL_TYPE["edgeLine"] = 3)] = "edgeLine"
+  TOOL_TYPE[(TOOL_TYPE["edgeLineDot"] = 4)] = "edgeLineDot"
+  TOOL_TYPE[(TOOL_TYPE["edgeH"] = 5)] = "edgeH"
+  TOOL_TYPE[(TOOL_TYPE["edgeHDot"] = 6)] = "edgeHDot"
+  TOOL_TYPE[(TOOL_TYPE["edgeV"] = 7)] = "edgeV"
+  TOOL_TYPE[(TOOL_TYPE["edgeVDot"] = 8)] = "edgeVDot"
+  TOOL_TYPE[(TOOL_TYPE["nodeClass"] = 9)] = "nodeClass"
+  TOOL_TYPE[(TOOL_TYPE["nodeNote"] = 10)] = "nodeNote"
+  TOOL_TYPE[(TOOL_TYPE["nodeInterface"] = 11)] = "nodeInterface"
+})(TOOL_TYPE || (TOOL_TYPE = {}))
+
+let currentTool = TOOL_TYPE.select
+
+function usingEdge() {
+  if (typeof currentTool === "string") {
+    return (
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeLine] ||
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeLineDot] ||
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeH] ||
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeV] ||
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeHDot] ||
+      currentTool === TOOL_TYPE[TOOL_TYPE.edgeVDot]
+    )
+  } else {
+    return (
+      currentTool === TOOL_TYPE.edgeLine ||
+      currentTool === TOOL_TYPE.edgeLineDot ||
+      currentTool === TOOL_TYPE.edgeH ||
+      currentTool === TOOL_TYPE.edgeV ||
+      currentTool === TOOL_TYPE.edgeHDot ||
+      currentTool === TOOL_TYPE.edgeVDot
+    )
+  }
+}
 
 function setTool(newTool) {
-  option = newTool
+  currentTool = newTool
 }
 
 function drawGrabber(ctx, bounds) {
@@ -21,12 +59,13 @@ function drawGrabberCorner(ctx, x, y) {
 
 document.addEventListener("DOMContentLoaded", function() {
   const toolbar = createToolbar(
-    createTBButton("select"),
-    createTBButton("edgeLine"),
-    createTBButton("dashLine"),
-    createTBButton("nodeClass"),
-    createTBButton("nodeNote"),
-    createTBButton("nodeInterface")
+    createTBButton(TOOL_TYPE[TOOL_TYPE.select]),
+    createTBButton(TOOL_TYPE[TOOL_TYPE.edgeLine]),
+    createTBButton(TOOL_TYPE[TOOL_TYPE.edgeLineDot]),
+    createTBButton(TOOL_TYPE[TOOL_TYPE.nodeNote]),
+    createTBButton(TOOL_TYPE[TOOL_TYPE.nodeClass]),
+    createTBButton(TOOL_TYPE[TOOL_TYPE.nodeInterface]),
+
   )
   toolbar.generateHTML()
 
@@ -39,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const interfacePropBar = createInterfaceProperty()
   interfacePropBar.generateHTML()
 
-  const graph = new Graph()
+  const graph = new createGraph()
   const canvas = document.getElementById("graphpanel")
   let dragStartPoint = undefined
   let dragStartBounds = undefined
@@ -62,12 +101,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if(c !== null){
       c.innerHTML = '';
     }
-    canvas.innerHTML = ""
-    const ctx = canvas.getContext("2d")
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     graph.draw()
 
-    if (selected !== undefined) {
+    if (selected) {
       const bounds = selected.getBounds()
       const ctx = canvas.getContext("2d")
       drawGrabber(ctx, bounds)
@@ -87,23 +125,23 @@ document.addEventListener("DOMContentLoaded", function() {
     dragStartPoint = mousePoint
     selected = graph.findNode(mousePoint)
 
-    if (option === "select" && selected) {
+    if (currentTool === "select" && selected) {
       dragStartBounds = selected.getBounds()
     }
 
-    if (option === "nodeClass") {
+    if (currentTool === "nodeClass") {
       let newClass = createNodeClass()
       newClass.translate(mousePoint.x, mousePoint.y)
       graph.add(newClass)
     }
 
-    if (option === "nodeNote") {
+    if (currentTool === "nodeNote") {
       let newNote = createNodeNote()
       newNote.translate(mousePoint.x, mousePoint.y)
       graph.add(newNote)
     }
 
-    if (option === "nodeInterface") {
+    if (currentTool === "nodeInterface") {
       let newInterface = createNodeInterface()
       newInterface.translate(mousePoint.x, mousePoint.y)
       graph.add(newInterface)
@@ -145,16 +183,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   canvas.addEventListener("mouseup", event => {
     let mousePoint = mouseLocation(event)
-
-    if (option === "edgeLine" && dragStartPoint != undefined) {
-      const edgeLine = createEdgeLine()
-      graph.connect(edgeLine, dragStartPoint, mousePoint)
-      repaint()
-    }
-
-    if (option === "dashLine" && dragStartPoint != undefined) {
-      const dashLine = createDashLine()
-      graph.connect(dashLine, dragStartPoint, mousePoint)
+    if (usingEdge() && dragStartPoint != undefined) {
+      let typeName = currentTool
+      typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
+      const e = window["create" + typeName]()
+      graph.connect(e, dragStartPoint, mousePoint)
       repaint()
     }
 
@@ -181,6 +214,5 @@ document.addEventListener("DOMContentLoaded", function() {
       repaint()
     }
   }
-  // do something
 })
 })

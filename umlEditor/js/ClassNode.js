@@ -4,7 +4,8 @@ function createNodeClass() {
   let type = "class"
   let x = 0
   let y = 0
-  let container = document.getElementById('nodeContainer')
+  let container = document.getElementById('button4')
+  let actualContainer = document.getElementById('nodeContainer')
   let table = document.createElement('table')
   let tr1 = document.createElement('tr')
   let tr2 = document.createElement('tr')
@@ -25,8 +26,8 @@ function createNodeClass() {
       return {
         x: x,
         y: y,
-        width: 120,
-        height: 90,
+        width: width,
+        height: height,
         center: () => {
           return { x: x + width / 2, y: y + height / 2 }
         }
@@ -46,6 +47,21 @@ function createNodeClass() {
     },
 
     draw: () => {
+      table.appendChild(tr1)
+      tr1.appendChild(td1)
+      table.appendChild(tr2)
+      tr2.appendChild(td2)
+      table.appendChild(tr3)
+      tr3.appendChild(td3)
+      table.style.position = 'absolute'
+      table.style.left = x + 'px'
+      table.style.top = y + 'px'
+      table.style.width = width + 'px'
+      table.style.height = height + 'px'
+      actualContainer.appendChild(table)
+    },
+
+    toolBarDraw: () => {
       table.appendChild(tr1)
       tr1.appendChild(td1)
       table.appendChild(tr2)
@@ -89,6 +105,11 @@ function createNodeClass() {
     },
     setText3: (text) => {
       td3.innerText = text
-    }    
+    },
+
+    scale: (factor) => {
+      width *= factor
+      height *= factor
+    }
   }
 }

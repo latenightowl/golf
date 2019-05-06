@@ -1,5 +1,7 @@
 #graphpanel {
     border: solid black thin;
+    width: 100vw;
+    height: 400px;
 }
 
 table {
@@ -8,6 +10,12 @@ table {
 
 .tBButton {
     opacity: 1;
+    float: left;
+}
+
+.tBButton-on {
+    opacity: 1;
+    background-color: orange;
     float: left;
 }
 

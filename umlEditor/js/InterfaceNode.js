@@ -1,10 +1,11 @@
 function createNodeInterface() {
-  let width = 80
+  let width = 100
   let height = 60
   let type = "interface"
   let x = 0
   let y = 0
-  let container = document.getElementById('nodeContainer')
+  let container = document.getElementById('button5')
+  let actualContainer = document.getElementById('nodeContainer')
   let table = document.createElement('table')
   let tr = document.createElement('tr')
   let tr2= document.createElement('tr')
@@ -52,7 +53,7 @@ function createNodeInterface() {
     table.style.top = y + 'px'
     table.style.width = width + 'px'
     table.style.height = height + 'px'
-    container.appendChild(table)
+    actualContainer.appendChild(table)
   },
 
   getConnectionPoint: other => {
@@ -79,6 +80,22 @@ function createNodeInterface() {
 
   setInterfaceMethodsText: (text) => {
     td2.innerText = text
+  },
+  scale: (factor) => {
+    width *= factor
+    height *= factor
+  },
+  toolBarDraw: () => {
+    table.appendChild(tr)
+    tr.appendChild(td)
+    table.appendChild(tr2)
+    tr2.appendChild(td2)
+    table.style.position = 'absolute'
+    table.style.left = x + 'px'
+    table.style.top = y + 'px'
+    table.style.width = width + 'px'
+    table.style.height = height + 'px'
+    container.appendChild(table)
   }
 }
 }

@@ -4,7 +4,7 @@ function createTBButton(myType) {
    let width = 50
    let height = 50
    let type = myType
-   let index = -1
+   let index = 1
 
    return {
       init(i) {
@@ -12,15 +12,17 @@ function createTBButton(myType) {
       },
 
       generateHTML() {
-         let div = document.createElement("div")
+         let div = document.createElement("button")
 
-         div.id = "button" + index
          div.className = "tBButton"
+         //div.title = myType
          div.addEventListener("click", function() {
             setTool(type)
          })
 
          let canvas = document.createElement("canvas")
+         canvas.id = "button" + index
+         index++
          canvas.width = width
          canvas.height = height
          div.appendChild(canvas)
@@ -29,31 +31,23 @@ function createTBButton(myType) {
          container.appendChild(div)
 
          let ctx = canvas.getContext("2d")
-         ctx.fillStyle = "black"
          ctx.strokeRect(0, 0, width, height)
 
          let typeName = type
          typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
 
-         if (type !== "select") {
+         if (type != "select") {
             let obj = window["create" + typeName]()
-            if (type === "dashLine") {
-               ctx.beginPath()
-               ctx.moveTo(width-10, 10)
-               ctx.lineTo(10, height-10)
-               ctx.setLineDash([5])
-               ctx.stroke()
+            // creating nodes
+            if (obj.translate) {
+               obj.scale(0.1)
+               obj.translate(0,0)
+               obj.toolBarDraw()
+            // creating edges
+            } else {
+               obj.connect({ x: 10, y: height - 10 }, { x: width - 10, y: 10 })
+               obj.draw(ctx)
             }
-            if (type === "edgeLine") {
-               ctx.beginPath()
-               ctx.moveTo(width-10, 10)
-               ctx.lineTo(10, height-10)
-               ctx.stroke()
-            }
-            if (type === "nodeClass") {
-               ctx.beginPath()
-            }
-
          } else {
             drawGrabber(ctx, {
                x: width / 4,
