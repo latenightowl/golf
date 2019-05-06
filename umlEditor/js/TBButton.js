@@ -15,7 +15,6 @@ function createTBButton(myType) {
          let div = document.createElement("button")
 
          div.className = "tBButton"
-         //div.title = myType
          div.addEventListener("click", function() {
             setTool(type)
          })
@@ -29,9 +28,13 @@ function createTBButton(myType) {
 
          let container = document.getElementById("toolbar-container")
          container.appendChild(div)
-
          let ctx = canvas.getContext("2d")
          ctx.strokeRect(0, 0, width, height)
+
+         if (index > 3){
+            ctx.fillStyle = "blue";
+            ctx.fillText(type.slice(4), 5, 25)
+         }
 
          let typeName = type
          typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
@@ -42,7 +45,6 @@ function createTBButton(myType) {
             if (obj.translate) {
                obj.scale(0.05)
                obj.toolBarDraw()
-            // creating edges
             } else {
                obj.connect({ x: 10, y: height - 10 }, { x: width - 10, y: 10 })
                obj.draw(ctx)
