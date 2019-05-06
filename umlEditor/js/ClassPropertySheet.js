@@ -1,3 +1,8 @@
+/**
+ * Declaration of a hard object for a class property sheet
+ * @function
+ * @return properties of the class property sheet
+ */
 function createClassProperty() {
    const input1 = document.createElement("input")
    const input2 = document.createElement("input")
@@ -5,6 +10,9 @@ function createClassProperty() {
    const br1 = document.createElement('br')
    const br2 = document.createElement('br')
    return {
+      /**
+       * Generates HTML of the class property sheet
+       */
       generateHTML() {
          input1.id = "name"
          input2.id = "attribute"
@@ -31,12 +39,20 @@ function createClassProperty() {
          container.appendChild(input3)
       },
 
+      /**
+       * Gets the text
+       * @param {String} text the text
+       * @return {String} the text
+       */
       getText(text1, text2, text3) {
          input1.value = text1
          input2.value = text2
          input3.value = text3
       },
 
+      /**
+       * Set the text to empty fields
+       */
       emptyField() {
          input1.value = ""
          input2.value = ""

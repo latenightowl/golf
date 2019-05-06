@@ -1,3 +1,12 @@
+/**
+ * Represents an arrowhead
+ * @param {context} ctx the context
+ * @param {number} fromX the from X point
+ * @param {number} fromY the from Y point
+ * @param {number} toX the to X point
+ * @param {number} toY the to Y point
+ * @param {number} r the radius
+ */
 function arrowHead(ctx, fromX, fromY, toX, toY, r) {
     let x_center = toX
     let y_center = toY

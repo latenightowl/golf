@@ -16,6 +16,10 @@ var TOOL_TYPE
 
 let currentTool = TOOL_TYPE.select
 
+/**
+ * Checks for which edge tool
+ * @return {enum} the type of edge
+ */
 function usingEdge() {
    if (typeof currentTool === "string") {
       return (
@@ -38,17 +42,31 @@ function usingEdge() {
    }
 }
 
+/**
+ * Sets tool
+ * @param {object} newTool the tool
+ */
 function setTool(newTool) {
    currentTool = newTool
 }
 
+/**
+ * Draws the grabber
+ * @param {Context} ctx the context
+ * @param {Object} bounds the coordinates of object
+ */
 function drawGrabber(ctx, bounds) {
    drawGrabberCorner(ctx, bounds.x, bounds.y)
    drawGrabberCorner(ctx, bounds.x + bounds.width, bounds.y)
    drawGrabberCorner(ctx, bounds.x, bounds.y + bounds.height)
    drawGrabberCorner(ctx, bounds.x + bounds.width, bounds.y + bounds.height)
 }
-
+/**
+ * Draws the corners of grabber
+ * @param {context} ctx the context
+ * @param {number} x the x position
+ * @param {number} y the y position
+ */
 function drawGrabberCorner(ctx, x, y) {
    const size = 4
    ctx.beginPath()
@@ -56,7 +74,9 @@ function drawGrabberCorner(ctx, x, y) {
    ctx.fillStyle = "black"
    ctx.fill()
 }
-
+/**
+ * Main
+ */
 document.addEventListener("DOMContentLoaded", function() {
    const toolbar = createToolbar(
       createTBButton(TOOL_TYPE[TOOL_TYPE.select]),
@@ -95,6 +115,9 @@ document.addEventListener("DOMContentLoaded", function() {
       repaint()
    })
 
+   /**
+    * Repaints the canvas
+    */
    function repaint() {
       let c = document.getElementById("nodeContainer")
       if (c !== null) {
