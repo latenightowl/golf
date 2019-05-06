@@ -9,14 +9,21 @@ class Graph {
    }
 
    remove(n) {
-      this.nodes.splice(this.nodes.indexOf(n), 1)
+      let toRemove = []
 
       for (const e of this.edges) {
          let startEnd = e.getStartEnd()
+
          if (startEnd[0] === n || startEnd[1] === n) {
-            this.edges.splice(this.edges.indexOf(e), 1)
+            toRemove.push(e)
          }
       }
+
+      for (const e of toRemove) {
+         this.edges.splice(this.edges.indexOf(e), 1)
+      }
+
+      this.nodes.splice(this.nodes.indexOf(n), 1)
    }
 
    findNode(p) {
