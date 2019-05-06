@@ -14,17 +14,15 @@
     <script src='../js/NoteNode.js' type='text/javascript'></script>
     <script src='../js/NotePropertySheet.js' type='text/javascript'></script>
     <script src='../js/DashedEdge.js' type='text/javascript'></script>
-
-
 </head>
 
     <body>
         <table id="toolbar-container"></table>
 
-        <table id="property-container"></table>
-
-        <table id="note-property-container"></table>
-
+        <table id="properties">
+            <td valign="top" id="property-container"></td>
+            <td valign="top" id="note-property-container"></td>
+        </table>
         <div>
             <div id='nodeContainer' style="position: absolute; width: 150px; height: 150px;"></div>
             <div><canvas id='graphpanel' style="position: absolute; z-index: 1" width="1000" height="500"></canvas></div>

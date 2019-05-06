@@ -11,6 +11,11 @@ table {
     float: left;
 }
 
+#property-container {
+    border-right: 1px solid #000;
+    padding: 10px;
+}
+
 #property-container p {
     display: inline;
     margin-right: 25px;
@@ -35,6 +40,10 @@ table {
     border: none;
 }
 
+#note-property-container {
+    padding: 10px;
+}
+
 #note-property-container p {
     display: inline;
     margin-right: 25px;
@@ -45,5 +54,5 @@ table {
     width: 150px;
     height: 18px;
     float: right;
-
+}
 

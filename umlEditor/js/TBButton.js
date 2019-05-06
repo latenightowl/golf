@@ -35,18 +35,25 @@ function createTBButton(myType) {
          let typeName = type
          typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
 
-         if (type != "select") {
+         if (type !== "select") {
             let obj = window["create" + typeName]()
-            if (obj.translate) {
-               obj.translate(width / 4, height / 4)
-               obj.draw(ctx)
-            } else {
+            if (type === "dashLine") {
+               ctx.beginPath()
+               ctx.moveTo(width-10, 10)
+               ctx.lineTo(10, height-10)
+               ctx.setLineDash([5])
+               ctx.stroke()
+            }
+            if (type === "edgeLine") {
                ctx.beginPath()
                ctx.moveTo(width-10, 10)
                ctx.lineTo(10, height-10)
                ctx.stroke()
             }
-            
+            if (type === "nodeClass") {
+               ctx.beginPath()
+            }
+
          } else {
             drawGrabber(ctx, {
                x: width / 4,

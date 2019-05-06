@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function() {
           notePropBar.getText(selected.getText()) : notePropBar.emptyField()
       }
     }
-
   repaint()
   })
 
@@ -116,19 +115,20 @@ document.addEventListener("DOMContentLoaded", function() {
     let mousePoint = mouseLocation(event)
 
     if (option === "edgeLine" && dragStartPoint != undefined) {
-      const e = createEdgeLine()
-      graph.connect(e, dragStartPoint, mousePoint)
+      const edgeLine = createEdgeLine()
+      graph.connect(edgeLine, dragStartPoint, mousePoint)
+      repaint()
     }
 
     if (option === "dashLine" && dragStartPoint != undefined) {
-      const e = createDashLine()
-      graph.connect(e, dragStartPoint, mousePoint)
+      const dashLine = createDashLine()
+      graph.connect(dashLine, dragStartPoint, mousePoint)
+      repaint()
     }
 
     dragStartPoint = undefined
     dragStartBounds = null
-    repaint()
-  })
+})
 
   canvas.addEventListener("mousemove", event => {
     let mousePoint = mouseLocation(event)
