@@ -43,14 +43,16 @@ Week 3
 <br/><br/>
 5/4 9:00pm - 10:00pm: Added additional functionality for the property sheet
 <br/><br/>
-5/5 3:00pm - 12:00am: Created additional ndoes, lines, and respective property sheets
+5/5 3:00pm - 5:00pm: Created additional nodes, lines, and respective property sheets
 <br/><br/>
-5/6 12:00am - 3:00am: Think about last couple of bugs: getting the html tables to show up on the toolbar, think about why it wasn't working, get extremely frustrated, and give up. Add deletion functionality.
+5/5 7:00pm - 12:00am: Created additional nodes, lines, and respective property sheets
 <br/><br/>
-5/6 9:00am - 4:30pm: Fixed getBounds() bug which didn't resize the grabbers. Added some css to make the editor look nicer. Realize we probably didn't implement the project correctly (as a framework). Try to fix the last bug: getting the html tables to appear on the toolbar. Add everything into the live site (my bitbucket).
+5/6 12:00am - 2:30am: Think about last couple of bugs: getting the html tables to show up on the toolbar, think about why it wasn't working, get extremely frustrated. Add deletion functionality.
+<br/><br/>
+5/6 10:00am - 3:00pm: Fixed getBounds() bug which didn't resize the grabbers. Added some css to make the editor look nicer. Realize we probably didn't implement the project correctly (as a framework). Try to fix the last bug: getting the html tables to appear on the toolbar. Add everything into the live site (my bitbucket).
 <br/><br/>
 Comments: I shouldn't have procrastinated but at least I understand the project and JavaScript MUCH better now.
 <br/><br/>
-Total hours this week: 25.75
+Total hours this week: 20.75
 <br/>
-Total hours on project: 35
+Total hours on project: 30
