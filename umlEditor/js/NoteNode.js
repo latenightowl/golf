@@ -21,8 +21,8 @@ function createNodeNote() {
     return {
       x: x,
       y: y,
-      width: 80,
-      height: 60,
+      width: width,
+      height: height,
       center: () => {
       return { x: x + width / 2, y: y + height / 2 }
     }
@@ -61,14 +61,6 @@ function createNodeNote() {
     if (dx < dy && dx >= -dy) return { x: centerX, y: y + height }
     if (dx >= dy && dx < -dy) return { x: centerX, y: y }
     return { x, y: centerY }
-  },
-
-  setColor: myColor => {
-    color = myColor
-  },
-
-  getColor: myColor => {
-    return color
   },
 
   getText: className => {

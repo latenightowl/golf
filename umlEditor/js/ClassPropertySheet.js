@@ -1,4 +1,4 @@
-function createProperty() {
+function createClassProperty() {
    const input1 = document.createElement("input")
    const input2 = document.createElement("input")
    const input3 = document.createElement("input")
