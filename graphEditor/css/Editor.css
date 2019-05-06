@@ -1,5 +1,13 @@
+body {
+   margin: 0;
+   padding: 0;
+}
+
 #graphpanel {
    border: solid black thin;
+   position: relative;
+   width: 100vw;
+   height: 400px;
 }
 
 .tBButton {
@@ -12,5 +20,5 @@
 }
 #property-container input {
 	display: inline;
-	width: 100px;
+	width: 200px;
 }

@@ -40,10 +40,13 @@ function createTBButton(myType) {
             let obj = window["create" + typeName]()
             if (obj.translate) {
                obj.scale(0.5)
-               obj.translate(width / 2 - obj.getBounds().width / 2, height / 2 - obj.getBounds().height / 2)
+               obj.translate(
+                  width / 2 - obj.getBounds().width / 2,
+                  height / 2 - obj.getBounds().height / 2
+               )
                obj.draw(ctx)
             } else {
-               obj.connect({ x: width - 10, y: 10 }, { x: 10, y: height - 10 })
+               obj.connect({ x: 10, y: height - 10 }, { x: width - 10, y: 10 })
                obj.draw(ctx)
             }
          } else {

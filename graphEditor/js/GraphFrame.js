@@ -85,9 +85,19 @@ document.addEventListener("DOMContentLoaded", function() {
    let dragStartBounds = undefined
    let selected = undefined
 
+   const canvasStyle = getComputedStyle(canvas)
+   canvas.width = parseInt(canvasStyle.width)
+   canvas.height = parseInt(canvasStyle.height)
+   const ctx = canvas.getContext("2d")
+
+   window.addEventListener("resize", function() {
+      const canvasStyle = getComputedStyle(canvas)
+      canvas.width = parseInt(canvasStyle.width)
+      canvas.height = parseInt(canvasStyle.height)
+      repaint()
+   })
+
    function repaint() {
-      canvas.innerHTML = ""
-      const ctx = canvas.getContext("2d")
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       graph.draw()
 
@@ -144,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       dragStartPoint = undefined
       dragStartBounds = null
-      
    })
 
    canvas.addEventListener("mousemove", (event) => {
@@ -157,6 +166,16 @@ document.addEventListener("DOMContentLoaded", function() {
          )
          repaint()
       }
-      
+   })
+
+   window.addEventListener("keydown", (event) => {
+      if (event.code === "Delete") {
+         if (selected) {
+            graph.remove(selected)
+            selected = null
+            repaint()
+         }
+      }
+      // do something
    })
 })

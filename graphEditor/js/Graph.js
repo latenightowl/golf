@@ -8,6 +8,10 @@ class Graph {
       this.nodes.push(n)
    }
 
+   remove(n) {
+      this.nodes.splice(this.nodes.indexOf(n), 1)
+   }
+
    findNode(p) {
       for (let i = this.nodes.length - 1; i >= 0; i--) {
          const n = this.nodes[i]
