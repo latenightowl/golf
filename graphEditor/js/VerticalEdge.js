@@ -25,6 +25,11 @@ function createEdgeV() {
          } else {
             q = end
          }
+         
+         // Ensure we draw left to right
+         if (p.x > q.x) {
+            [p, q] = [q, p]
+         }
 
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(p.x, q.y)
