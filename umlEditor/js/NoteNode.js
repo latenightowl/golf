@@ -2,7 +2,6 @@ function createNodeNote() {
   let width = 40
   let height = 30
   let type = "note"
-  let color = "yellow"
   let x = 0
   let y = 0
   let container = document.getElementById('nodeContainer')
@@ -63,12 +62,12 @@ function createNodeNote() {
     return { x, y: centerY }
   },
 
-  getText: className => {
+  getText: noteText => {
     return td.innerText
   },
 
-  setText: className => {
-    td.innerText = className
+  setText: noteText => {
+    td.innerText = noteText
   }
 }
 }

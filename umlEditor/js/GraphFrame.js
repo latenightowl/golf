@@ -27,15 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
     createTBButton("nodeNote")
   )
   toolbar.generateHTML()
+
   const propBar = createClassProperty()
   propBar.generateHTML()
 
-  let input1 = document.getElementById("name")
-  input1.addEventListener("input", event => {selected.setText1(input1.value)})
-  let input2 = document.getElementById("attribute")
-  input2.addEventListener("input", event => {selected.setText2(input2.value)})
-  let input3 = document.getElementById("methods")
-  input3.addEventListener("input", event => {selected.setText3(input3.value)})
+  const notePropBar = createNoteProperty()
+  notePropBar.generateHTML()
 
   const graph = new Graph()
   const canvas = document.getElementById("graphpanel")
@@ -73,12 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
     dragStartPoint = mousePoint
     selected = graph.findNode(mousePoint)
 
-    selected !== undefined ? 
-      propBar.getText(selected.getText1(),selected.getText2(),selected.getText3()) 
-      : propBar.emptyField()
-
     if (option === "select" && selected) {
-    dragStartBounds = selected.getBounds()
+      dragStartBounds = selected.getBounds()
     }
 
     if (option === "nodeClass") {
@@ -88,12 +81,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (option === "nodeNote") {
-      let newClass = createNodeNote()
-      newClass.translate(mousePoint.x, mousePoint.y)
-      graph.add(newClass)
+      let newNote = createNodeNote()
+      newNote.translate(mousePoint.x, mousePoint.y)
+      graph.add(newNote)
     }
-    
-    repaint()
+
+    if (selected !== undefined) {
+      if (selected.getType() === "class") {
+        let input1 = document.getElementById("name")
+        input1.addEventListener("input", event => {selected.setText1(input1.value)})
+        let input2 = document.getElementById("attribute")
+        input2.addEventListener("input", event => {selected.setText2(input2.value)})
+        let input3 = document.getElementById("methods")
+        input3.addEventListener("input", event => {selected.setText3(input3.value)})
+
+        selected !== undefined ?
+          propBar.getText(selected.getText1(),selected.getText2(),selected.getText3()) : propBar.emptyField()
+      }
+
+      if (selected.getType() === "note") {
+        let input = document.getElementById("text")
+        input.addEventListener("input", event => {selected.setText(input.value)})
+
+        selected !== undefined ?
+          notePropBar.getText(selected.getText()) : notePropBar.emptyField()
+      }
+    }
+
+  repaint()
   })
 
   canvas.addEventListener("mouseup", event => {

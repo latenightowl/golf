@@ -13,11 +13,14 @@ function createClassProperty() {
          const name = document.createElement("p")
          const attribute = document.createElement("p")
          const methods = document.createElement("p")
+         const title = document.createElement("h3")
+         title.innerHTML = "Class"
          name.innerHTML = "Name: "
          attribute.innerHTML = "Attribute: "
          methods.innerHTML = "Methods: "
 
          let container = document.getElementById("property-container")
+         container.appendChild(title)
          container.appendChild(name)
          container.appendChild(input1)
          container.appendChild(br1)
