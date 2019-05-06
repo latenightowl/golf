@@ -37,13 +37,20 @@ Total hours this week: 3
 Total hours on project: 9.25
 
 Week 3
-======
-4/27 3:00pm - 5:00pm: XXX
+5/3 3:00pm - 6:00pm: Added html tables and connection points
 <br/><br/>
-4/28 6:00pm - 7:00pm: XXX
+5/3 9:00pm - 11:15pm: Added initial property sheet for html table
 <br/><br/>
-Comments: XXX
+5/4 9:00pm - 10:00pm: Added additional functionality for the property sheet
 <br/><br/>
-Total hours this week: 
+5/5 3:00pm - 12:00am: Created additional ndoes, lines, and respective property sheets
+<br/><br/>
+5/6 12:00am - 3:00am: Think about last couple of bugs: getting the html tables to show up on the toolbar, think about why it wasn't working, get extremely frustrated, and give up. Add deletion functionality.
+<br/><br/>
+5/6 9:00am - 4:30pm: Fixed getBounds() bug which didn't resize the grabbers. Added some css to make the editor look nicer. Realize we probably didn't implement the project correctly (as a framework). Try to fix the last bug: getting the html tables to appear on the toolbar. Add everything into the live site (my bitbucket).
+<br/><br/>
+Comments: I shouldn't have procrastinated but at least I understand the project and JavaScript MUCH better now.
+<br/><br/>
+Total hours this week: 25.75
 <br/>
-Total hours on project: 9.25
+Total hours on project: 35
