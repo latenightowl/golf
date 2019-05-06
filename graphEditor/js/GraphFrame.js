@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       graph.draw()
 
-      if (selected !== undefined) {
+      if (selected) {
          const bounds = selected.getBounds()
          const ctx = canvas.getContext("2d")
          drawGrabber(ctx, bounds)
