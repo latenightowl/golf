@@ -16,6 +16,17 @@ class Graph {
       return undefined
    }
 
+   remove(n) {
+      this.nodes.splice(this.nodes.indexOf(n), 1)
+
+      for (const e of this.edges) {
+         let startEnd = e.getStartEnd()
+         if (startEnd[0] === n || startEnd[1] === n) {
+            this.edges.splice(this.edges.indexOf(e), 1)
+         }
+      }
+   }
+
    draw() {
       const canvas = document.getElementById("graphpanel")
       const ctx = canvas.getContext("2d")

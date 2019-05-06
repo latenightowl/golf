@@ -45,6 +45,18 @@ document.addEventListener("DOMContentLoaded", function() {
   let dragStartBounds = undefined
   let selected = undefined
 
+  const canvasStyle = getComputedStyle(canvas)
+  canvas.width = parseInt(canvasStyle.width)
+  canvas.height = parseInt(canvasStyle.height)
+  const ctx = canvas.getContext("2d")
+
+  window.addEventListener("resize", function() {
+    const canvasStyle = getComputedStyle(canvas)
+    canvas.width = parseInt(canvasStyle.width)
+    canvas.height = parseInt(canvasStyle.height)
+    repaint()
+  })
+
   function repaint() {
     let c = document.getElementById('nodeContainer');
     if(c !== null){
@@ -160,4 +172,15 @@ document.addEventListener("DOMContentLoaded", function() {
     )}
     repaint()
   })
+
+  window.addEventListener("keydown", (event) => {
+    if (event.code === "Delete" || event.code === "Backspace") {
+    if (selected) {
+      graph.remove(selected)
+      selected = null
+      repaint()
+    }
+  }
+  // do something
+})
 })
