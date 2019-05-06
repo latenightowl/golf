@@ -36,6 +36,9 @@ function createEdgeV() {
          ctx.lineTo(q.x, q.y)
          ctx.setLineDash([])
          ctx.stroke()
+      },
+      getStartEnd: () => {
+         return [start, end]
       }
    }
 }

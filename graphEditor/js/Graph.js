@@ -10,6 +10,13 @@ class Graph {
 
    remove(n) {
       this.nodes.splice(this.nodes.indexOf(n), 1)
+
+      for (const e of this.edges) {
+         let startEnd = e.getStartEnd()
+         if (startEnd[0] === n || startEnd[1] === n) {
+            this.edges.splice(this.edges.indexOf(e), 1)
+         }
+      }
    }
 
    findNode(p) {

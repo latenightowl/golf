@@ -36,6 +36,9 @@ function createEdgeHDot() {
          ctx.lineTo(q.x, q.y)
          ctx.setLineDash([5])
          ctx.stroke()
+      },
+      getStartEnd: () => {
+         return [start, end]
       }
    }
 }
