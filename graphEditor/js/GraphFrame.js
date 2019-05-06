@@ -2,7 +2,6 @@ let option = "select"
 
 function setTool(newTool) {
    option = newTool
-   console.log(option)
 }
 
 function drawGrabber(ctx, bounds) {
@@ -33,22 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
    const input = document.getElementById("color")
    input.addEventListener("input", event => {
-      console.log('sucesss')
       if(propBar.isColor(input.value)) {
          selected.setColor(input.value)
          repaint()
       }
    })
-
-
-   // let all = document.getElementsByClassName("tBButton")
-   // console.log(all.length)
-
-   // for (let i = 0, max = all.length; i < max; i++) {
-   //    console.log("found")
-   // }
-
-   // toolCircle()
 
    const graph = new Graph()
    const canvas = document.getElementById("graphpanel")

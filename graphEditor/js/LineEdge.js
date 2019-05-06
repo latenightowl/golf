@@ -12,10 +12,8 @@ function createEdgeLine() {
       },
       draw: (ctx) => {
          ctx.beginPath()
-         //const pCenter = center(start.getBounds()) // Just pick the center of the bounds for now
-         //const qCenter = center(end.getBounds()) // Not the "connection points" that graphed2 uses
-         const p = start.getConnectionPoint(end) // Just pick the center of the bounds for now
-         const q = end.getConnectionPoint(start) // Not the "connection points" that graphed2 uses
+         const p = start.getConnectionPoint(end)
+         const q = end.getConnectionPoint(start)
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(q.x, q.y)
          ctx.stroke()
