@@ -3,8 +3,8 @@ function center(rect) {
 }
 
 function createEdgeLine() {
-   let start = undefined
-   let end = undefined
+   let start
+   let end
    return {
       connect: (s, e) => {
          start = s
@@ -12,8 +12,20 @@ function createEdgeLine() {
       },
       draw: (ctx) => {
          ctx.beginPath()
-         let p = start.getConnectionPoint(end)
-         let q = end.getConnectionPoint(start)
+
+         let p
+         let q
+         if (start.getConnectionPoint) {
+            p = start.getConnectionPoint(end)
+         } else {
+            p = start
+         }
+         if (end.getConnectionPoint) {
+            q = end.getConnectionPoint(start)
+         } else {
+            q = end
+         }
+
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(q.x, q.y)
          ctx.setLineDash([])

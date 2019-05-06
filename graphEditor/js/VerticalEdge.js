@@ -12,8 +12,20 @@ function createEdgeV() {
       },
       draw: (ctx) => {
          ctx.beginPath()
-         const p = start.getConnectionPoint(end)
-         const q = end.getConnectionPoint(start)
+
+         let p
+         let q
+         if (start.getConnectionPoint) {
+            p = start.getConnectionPoint(end)
+         } else {
+            p = start
+         }
+         if (end.getConnectionPoint) {
+            q = end.getConnectionPoint(start)
+         } else {
+            q = end
+         }
+
          ctx.moveTo(p.x, p.y)
          ctx.lineTo(p.x, q.y)
          ctx.lineTo(q.x, q.y)

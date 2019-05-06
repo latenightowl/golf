@@ -39,13 +39,12 @@ function createTBButton(myType) {
          if (type != "select") {
             let obj = window["create" + typeName]()
             if (obj.translate) {
-               obj.translate(width / 4, height / 4)
+               obj.scale(0.5)
+               obj.translate(width / 2 - obj.getBounds().width / 2, height / 2 - obj.getBounds().height / 2)
                obj.draw(ctx)
             } else {
-               ctx.beginPath()
-               ctx.moveTo(width - 10, 10)
-               ctx.lineTo(10, height - 10)
-               ctx.stroke()
+               obj.connect({ x: width - 10, y: 10 }, { x: 10, y: height - 10 })
+               obj.draw(ctx)
             }
          } else {
             drawGrabber(ctx, {

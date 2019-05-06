@@ -1,10 +1,12 @@
+"use strict"
+
 function createNodeDiamond() {
-   let width = 50
-   let height = 30
+   let width = 60
+   let height = 40
    let x = 0
    let y = 0
    let type = "diamond"
-   let color = "black"
+   let color = "grayF"
 
    return {
       getType: () => {
@@ -21,7 +23,7 @@ function createNodeDiamond() {
             }
          }
       },
-      contains: p => {
+      contains: (p) => {
          return (
             (x + width / 2 - p.x) ** 2 + (y + height / 2 - p.y) ** 2 <=
             (width * height) / 4
@@ -31,7 +33,7 @@ function createNodeDiamond() {
          x += dx
          y += dy
       },
-      draw: ctx => {
+      draw: (ctx) => {
          ctx.beginPath()
          ctx.moveTo(x + width / 2, y)
          ctx.lineTo(x + width, y + height / 2)
@@ -40,7 +42,7 @@ function createNodeDiamond() {
          ctx.fillStyle = color
          ctx.fill()
       },
-      getConnectionPoint: other => {
+      getConnectionPoint: (other) => {
          let centerX = x + width / 2
          let centerY = y + height / 2
          let dx = other.getBounds().center().x - x
@@ -50,11 +52,15 @@ function createNodeDiamond() {
          if (dx >= dy && dx < -dy) return { x: centerX, y: y }
          return { x, y: centerY }
       },
-      setColor: myColor => {
+      setColor: (myColor) => {
          color = myColor
       },
       getColor: () => {
          return color
+      },
+      scale: (factor) => {
+         width *= factor
+         height *= factor
       }
    }
 }
