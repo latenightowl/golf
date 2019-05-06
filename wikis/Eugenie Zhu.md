@@ -53,6 +53,6 @@ Week 3
 <br/><br/>
 Comments: I shouldn't have procrastinated but at least I understand the project and JavaScript MUCH better now.
 <br/><br/>
-Total hours this week: 20.75
+Total hours this week: 22.25
 <br/>
-Total hours on project: 30
+Total hours on project: 31.5
