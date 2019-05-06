@@ -30,6 +30,8 @@ function createEdgeLine() {
     ctx.lineTo(q.x, q.y)
     ctx.setLineDash([])
     ctx.stroke()
+
+    arrowHead(ctx, p.x, p.y, q.x, q.y, 7);
   },
   getStartEnd: () => {
     return [start, end]
