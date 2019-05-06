@@ -16,6 +16,7 @@ function createEdgeLine() {
     const q = end.getConnectionPoint(start) 
     ctx.moveTo(p.x, p.y)
     ctx.lineTo(q.x, q.y)
+    ctx.setLineDash([])
     ctx.stroke()
   }
 }
