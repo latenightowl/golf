@@ -13,9 +13,9 @@ function createNodeClass() {
   let td1 = document.createElement('th')
   let td2 = document.createElement('td')
   let td3 = document.createElement('td')
-  td1.innerText = ""
-  td2.innerText = ""
-  td3.innerText = ""
+  td1.innerText = "Class Name"
+  td2.innerText = "Attributes"
+  td3.innerText = "Methods"
 
   return {
     getType: () => {

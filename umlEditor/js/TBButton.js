@@ -36,12 +36,11 @@ function createTBButton(myType) {
          let typeName = type
          typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
 
-         if (type != "select") {
+         if (type !== "select") {
             let obj = window["create" + typeName]()
             // creating nodes
             if (obj.translate) {
-               obj.scale(0.1)
-               obj.translate(0,0)
+               obj.scale(0.05)
                obj.toolBarDraw()
             // creating edges
             } else {
