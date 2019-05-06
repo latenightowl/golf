@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
       createTBButton("edgeLine")
    )
    toolbar.generateHTML()
-   const propBar = createClassProperty()
+   const propBar = createProperty()
    propBar.generateHTML()
 
    const input = document.getElementById("color")
