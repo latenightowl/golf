@@ -1,15 +1,17 @@
-function createNodeNote() {
-  let width = 40
-  let height = 30
-  let type = "note"
+function createNodeInterface() {
+  let width = 80
+  let height = 60
+  let type = "interface"
   let x = 0
   let y = 0
   let container = document.getElementById('nodeContainer')
   let table = document.createElement('table')
   let tr = document.createElement('tr')
+  let tr2= document.createElement('tr')
   let td = document.createElement('th')
-  td.innerText = "Note"
-  table.bgColor = "yellow"
+  let td2 = document.createElement('td')
+  td.innerText = "<<interface>>"
+  td2.innerText = ""
 
   return {
     getType: () => {
@@ -43,6 +45,8 @@ function createNodeNote() {
   draw: () => {
     table.appendChild(tr)
     tr.appendChild(td)
+    table.appendChild(tr2)
+    tr2.appendChild(td2)
     table.style.position = 'absolute'
     table.style.left = x + 'px'
     table.style.top = y + 'px'
@@ -62,12 +66,19 @@ function createNodeNote() {
     return { x, y: centerY }
   },
 
-  getText: noteText => {
+  getText1: text => {
     return td.innerText
   },
+  getText2: text => {
+    return td2.innerText
+  },
 
-  setText: noteText => {
-    td.innerText = noteText
+  setInterfaceText: (text) => {
+    td.innerText = text
+  },
+
+  setInterfaceMethodsText: (text) => {
+    td2.innerText = text
   }
 }
 }

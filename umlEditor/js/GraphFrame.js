@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
     createTBButton("edgeLine"),
     createTBButton("dashLine"),
     createTBButton("nodeClass"),
-    createTBButton("nodeNote")
+    createTBButton("nodeNote"),
+    createTBButton("nodeInterface")
   )
   toolbar.generateHTML()
 
@@ -34,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const notePropBar = createNoteProperty()
   notePropBar.generateHTML()
+
+  const interfacePropBar = createInterfaceProperty()
+  interfacePropBar.generateHTML()
 
   const graph = new Graph()
   const canvas = document.getElementById("graphpanel")
@@ -87,6 +91,12 @@ document.addEventListener("DOMContentLoaded", function() {
       graph.add(newNote)
     }
 
+    if (option === "nodeInterface") {
+      let newInterface = createNodeInterface()
+      newInterface.translate(mousePoint.x, mousePoint.y)
+      graph.add(newInterface)
+    }
+
     if (selected !== undefined) {
       if (selected.getType() === "class") {
         let input1 = document.getElementById("name")
@@ -106,6 +116,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         selected !== undefined ?
           notePropBar.getText(selected.getText()) : notePropBar.emptyField()
+      }
+
+      if (selected.getType() === "interface") {
+        let input = document.getElementById("interfaceName")
+        input.addEventListener("input", event => {selected.setInterfaceText(input.value)})
+        let input1 = document.getElementById("interfaceMethods")
+        input1.addEventListener("input", event => {selected.setInterfaceMethodsText(input1.value)})
+
+        selected !== undefined ?
+          interfacePropBar.getText(selected.getText1(), selected.getText2()) : interfacePropBar.emptyField()
       }
     }
   repaint()

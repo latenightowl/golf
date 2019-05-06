@@ -23,7 +23,7 @@ table {
 
 #property-container input {
     display: inline;
-    width: 100px;
+    width: 150px;
     height: 18px;
     float: right;
 }
@@ -42,6 +42,7 @@ table {
 
 #note-property-container {
     padding: 10px;
+    border-right: 1px solid #000;
 }
 
 #note-property-container p {
@@ -50,6 +51,22 @@ table {
 }
 
 #note-property-container input {
+    display: inline;
+    width: 150px;
+    height: 18px;
+    float: right;
+}
+
+#interface-property-container {
+    padding: 10px;
+}
+
+#interface-property-container p {
+    display: inline;
+    margin-right: 25px;
+}
+
+#interface-property-container input {
     display: inline;
     width: 150px;
     height: 18px;
