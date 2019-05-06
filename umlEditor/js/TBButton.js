@@ -1,5 +1,8 @@
-"use strict"
-
+/**
+ * Declaration of a toolbar button
+ * @function
+ * @return properties
+ */
 function createTBButton(myType) {
    let width = 50
    let height = 50
@@ -7,10 +10,16 @@ function createTBButton(myType) {
    let index = 1
 
    return {
+      /**
+       * initializes
+       * @param {number} i the index 
+       */
       init(i) {
          index = i
       },
-
+      /**
+       * generates the html tags
+       */
       generateHTML() {
          let div = document.createElement("button")
 
