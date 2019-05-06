@@ -1,15 +1,32 @@
+/**
+ * Gets the center
+ * @param {object} rect the rectangle
+ * @return {object} returns x and y
+ */
 function center(rect) {
    return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
 }
-
+/**
+ * creates regular dotted edge
+ * @return {object} edge with properties
+ */
 function createEdgeLineDot() {
    let start
    let end
    return {
+      /**
+       * Connects two points
+       * @param {object} s the start
+       * @param {object} e the end
+       */
       connect: (s, e) => {
          start = s
          end = e
       },
+      /**
+       * draws the edge
+       * @param {context} ctx the context
+       */
       draw: (ctx) => {
          ctx.beginPath()
 
@@ -31,6 +48,10 @@ function createEdgeLineDot() {
          ctx.setLineDash([5])
          ctx.stroke()
       },
+      /**
+       * gets the objects
+       * @return {objects} the start and end objects
+       */
       getStartEnd: () => {
          return [start, end]
       }
