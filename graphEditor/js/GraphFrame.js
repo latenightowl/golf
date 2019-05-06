@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
    })
 
-   const graph = new Graph()
+   const graph = createGraph()
    const canvas = document.getElementById("graphpanel")
    let dragStartPoint = undefined
    let dragStartBounds = undefined
