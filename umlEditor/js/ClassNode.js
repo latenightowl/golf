@@ -2,7 +2,6 @@ function createNodeClass() {
   let width = 120
   let height = 90
   let type = "class"
-  let color = "black"
   let x = 0
   let y = 0
   let container = document.getElementById('nodeContainer')
@@ -16,7 +15,6 @@ function createNodeClass() {
   td1.innerText = ""
   td2.innerText = ""
   td3.innerText = ""
-
 
   return {
     getType: () => {
@@ -73,15 +71,6 @@ function createNodeClass() {
       return { x, y: centerY }
     },
 
-    setColor: myColor => {
-      color = myColor
-    },
-
-    getColor: myColor => {
-      return color
-    },
-
-
     getText1: text => {
       return td1.innerText
     },
@@ -91,7 +80,6 @@ function createNodeClass() {
     getText3: text => {
       return td3.innerText
     },
-
 
     setText1: (text) => {
       td1.innerText = text
