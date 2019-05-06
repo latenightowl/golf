@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const toolbar = createToolbar(
     createTBButton("select"),
     createTBButton("edgeLine"),
+    createTBButton("dashLine"),
     createTBButton("nodeClass"),
     createTBButton("nodeNote")
   )
@@ -113,10 +114,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   canvas.addEventListener("mouseup", event => {
     let mousePoint = mouseLocation(event)
+
     if (option === "edgeLine" && dragStartPoint != undefined) {
-    const e = createEdgeLine()
-    graph.connect(e, dragStartPoint, mousePoint)
+      const e = createEdgeLine()
+      graph.connect(e, dragStartPoint, mousePoint)
     }
+
+    if (option === "dashLine" && dragStartPoint != undefined) {
+      const e = createDashLine()
+      graph.connect(e, dragStartPoint, mousePoint)
+    }
+
     dragStartPoint = undefined
     dragStartBounds = null
     repaint()
