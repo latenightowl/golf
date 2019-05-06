@@ -2,7 +2,6 @@ let option = "select"
 
 function setTool(newTool) {
   option = newTool
-  console.log(option)
 }
 
 function drawGrabber(ctx, bounds) {
