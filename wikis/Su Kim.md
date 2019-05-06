@@ -34,8 +34,8 @@ Total hours on project:  19 hours
 Week 3
 ======
 (5/3) 5:00p-8:00p: Implemented basic property function, can edit color on nodes.  
-(5/5) aslkdfjl  
+(5/5) 2:30p-4:30p: add more function to class node, cleaned up framework, minor changes  
 ...  
 Comments: Thinking of what other necessary function we need to implement..  
-Total hours this week:  
-Total hours on project:  
+Total hours this week:  5 hours  
+Total hours on project:  24 hours  
